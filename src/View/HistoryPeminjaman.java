@@ -68,7 +68,8 @@ public class HistoryPeminjaman extends JFrame {
         btnBack.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                
+                String[] invoke = {"test", "run"};
+                View.MainMenuFrame.main(invoke);
             }
         });
         pnlBtnBack.add(btnBack);
@@ -102,7 +103,8 @@ public class HistoryPeminjaman extends JFrame {
         btnSelect.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                
+                String[] invoke = {"test", "run"};
+                View.DetailHistory.main(invoke);
             }
         });
         pnlTabel.add(btnSelect);

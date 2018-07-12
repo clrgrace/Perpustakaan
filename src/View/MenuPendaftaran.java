@@ -3,10 +3,13 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -65,7 +68,8 @@ public class MenuPendaftaran extends JFrame {
         btnBack.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                
+                String[] invoke = {"test", "run"};
+                View.MainMenuFrame.main(invoke);
             }
         });
         pnlBtnBack.add(btnBack);
@@ -77,12 +81,41 @@ public class MenuPendaftaran extends JFrame {
         add(pnlDosen);
         
         lblDosen = new JLabel("DOSEN");
-        lblDosen.setBounds(110, 10, 75, 75);
+        lblDosen.setBounds(100, 10, 75, 75);
+        lblDosen.setFont(new Font("Impact", Font.PLAIN, 24));
         pnlDosen.add(lblDosen);
         
         lblIconDosen = new JLabel();
         lblIconDosen.setBounds(30, 110, 200, 200);
         lblIconDosen.setIcon(new ImageIcon(resizeImage("img/dosen.png")));
+        lblIconDosen.addMouseListener(new MouseListener(){
+            @Override
+            public void mouseClicked(MouseEvent me) {
+                String[] invoke = {"test", "run"};
+                View.Pendaftaran.main(invoke);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+                
+            }
+            
+        });
         pnlDosen.add(lblIconDosen);
         
         pnlMhs = new JPanel();
@@ -92,12 +125,41 @@ public class MenuPendaftaran extends JFrame {
         add(pnlMhs);
         
         lblMahasiswa = new JLabel("MAHASISWA");
-        lblMahasiswa.setBounds(92, 10, 75, 75);
+        lblMahasiswa.setBounds(70, 10, 125, 75);
+        lblMahasiswa.setFont(new Font("Impact", Font.PLAIN, 24));
         pnlMhs.add(lblMahasiswa);
         
         lblIconMhs = new JLabel();
         lblIconMhs.setBounds(30, 110, 200, 200);
         lblIconMhs.setIcon(new ImageIcon(resizeImage("img/mahasiswa.png")));
+        lblIconMhs.addMouseListener(new MouseListener(){
+            @Override
+            public void mouseClicked(MouseEvent me) {
+                String[] invoke = {"test", "run"};
+                View.Pendaftaran.main(invoke);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+                
+            }
+            
+        });
         pnlMhs.add(lblIconMhs);
         
         pnlTamu = new JPanel();
@@ -107,12 +169,41 @@ public class MenuPendaftaran extends JFrame {
         add(pnlTamu);
         
         lblTamu = new JLabel("TAMU");
-        lblTamu.setBounds(115, 10, 75, 75);
+        lblTamu.setBounds(100, 10, 75, 75);
+        lblTamu.setFont(new Font("Impact", Font.PLAIN, 24));
         pnlTamu.add(lblTamu);
         
         lblIconTamu = new JLabel();
         lblIconTamu.setBounds(30, 110, 200, 200);
         lblIconTamu.setIcon(new ImageIcon(resizeImage("img/tamu.png")));
+        lblIconTamu.addMouseListener(new MouseListener(){
+            @Override
+            public void mouseClicked(MouseEvent me) {
+                String[] invoke = {"test", "run"};
+                View.Pendaftaran.main(invoke);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+                
+            }
+            
+        });
         pnlTamu.add(lblIconTamu);
     }
     

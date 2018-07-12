@@ -69,7 +69,8 @@ public class DetailHistory extends JFrame {
         btnBack.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                
+                String[] invoke = {"test", "run"};
+                View.HistoryPeminjaman.main(invoke);
             }
         });
         pnlBtnBack.add(btnBack);
@@ -99,11 +100,12 @@ public class DetailHistory extends JFrame {
         btnOk = new JButton("OK");
         btnOk.setBounds(650, 400, 100, 30);
         btnOk.setMnemonic('O');
-        btnOk.setToolTipText("Click OK to return to the lis of books.");
+        btnOk.setToolTipText("Click OK to return to the list of books.");
         btnOk.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                
+                String[] invoke = {"test", "run"};
+                View.MainMenuFrame.main(invoke);
             }
         });
         pnlTabel.add(btnOk);
