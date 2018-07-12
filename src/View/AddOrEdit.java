@@ -19,7 +19,7 @@ public class AddOrEdit extends JFrame {
         initComponents();
     }
 
-    private void onClickSubmit(ActionEvent evt) {
+    private void onClickSubmit(MouseEvent evt) {
         if (evt.toString().equalsIgnoreCase("submit")) {
             JOptionPane.showMessageDialog(null, "Berhasil di submit");
         } else {
@@ -27,7 +27,7 @@ public class AddOrEdit extends JFrame {
         }
     }
 
-    private void onClickCancel(ActionEvent evt) {
+    private void onClickCancel(MouseEvent evt) {
         if (evt.toString().equalsIgnoreCase("submit")) {
             JOptionPane.showMessageDialog(null, "Berhasil di cancel");
         }
