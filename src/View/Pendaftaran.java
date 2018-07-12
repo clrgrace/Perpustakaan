@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author user
+ * @author Grace
  */
 public class Pendaftaran extends JFrame {
     
