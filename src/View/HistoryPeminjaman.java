@@ -1,10 +1,15 @@
 package View;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,7 +26,9 @@ public class HistoryPeminjaman extends JFrame {
     private JPanel pnlBtnBack;
     private JPanel pnlTabel;
     private JButton btnBack;
+    private JButton btnSelect;
     private JLabel lblJudul;
+    private JLabel lblIcon;
     private JTable tblListBuku;
     
     Object [][] data = {
@@ -73,18 +80,47 @@ public class HistoryPeminjaman extends JFrame {
         add(pnlTabel);
         
         lblJudul = new JLabel("List Buku Perpustakaan");
-        lblJudul.setBounds(325, 10, 150, 50);
+        lblJudul.setBounds(215, 10, 500, 50);
+        lblJudul.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
         pnlTabel.add(lblJudul);
         
         tblListBuku = new JTable(data, colNames);
         tblListBuku.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(tblListBuku);
-        scrollPane.setBounds(15, 70, 755, 150);
+        scrollPane.setBounds(15, 70, 755, 70);
         pnlTabel.add(scrollPane);
+        
+        lblIcon = new JLabel();
+        lblIcon.setBounds(15, 165, 300, 300);
+        lblIcon.setIcon(new ImageIcon(resizeImage("img/library4.png")));
+        pnlTabel.add(lblIcon);
+        
+        btnSelect = new JButton("Select");
+        btnSelect.setBounds(650, 350, 100, 30);
+        btnSelect.setMnemonic('S');
+        btnSelect.setToolTipText("Click OK to return to the lis of books.");
+        btnSelect.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                
+            }
+        });
+        pnlTabel.add(btnSelect);
     }
     
     public static void main(String[] args) {
         new HistoryPeminjaman().setVisible(true);
+    }
+    
+    private Image resizeImage(String url){
+        Image dimg = null;
+        try{
+            BufferedImage img = ImageIO.read(new File(url));
+            dimg = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        } catch(IOException ex){
+            ex.printStackTrace(System.err);
+        }
+        return dimg;
     }
     
 }

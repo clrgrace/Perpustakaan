@@ -18,7 +18,7 @@ public class ListBuku extends JFrame {
         initComponents();
     }
 
-    private void onClickSubmit(ActionEvent evt) {
+    private void onClickSubmit(MouseEvent evt) {
         if (evt.toString().equalsIgnoreCase("submit")) {
             JOptionPane.showMessageDialog(null, "Berhasil di submit");
         } else if (evt.toString().equalsIgnoreCase("edit")) {
