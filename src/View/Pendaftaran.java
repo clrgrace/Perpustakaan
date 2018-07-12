@@ -2,8 +2,14 @@ package View;
 
 import javax.swing.JOptionPane;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -23,6 +29,7 @@ public class Pendaftaran extends JFrame {
     private JPanel pnlAlamat;
     private JPanel pnlNoTelp;
     private JPanel pnlEmail;
+    private JPanel pnlIcon;
     private JPanel pnlBtnBack;
     private JPanel pnlBtnSub;
     private JButton btnBack;
@@ -35,6 +42,7 @@ public class Pendaftaran extends JFrame {
     private JLabel lblAlamat;
     private JLabel lblNoTelp;
     private JLabel lblEmail;
+    private JLabel lblLibrary;
     private JTextField txtId;
     private JTextField txtNama;
     private JTextField txtJK;
@@ -57,14 +65,14 @@ public class Pendaftaran extends JFrame {
         //panel
         setSize(800, 500);
         setLocationRelativeTo(null);
-        getContentPane().setBackground(Color.white);
+        getContentPane().setBackground(Color.orange);
         getContentPane().setLayout(null);
         
         //ID
         pnlId = new JPanel();
         pnlId.setBounds(5, 10, 750, 100);
         pnlId.setLayout(null);
-        pnlId.setBackground(Color.white);
+        pnlId.setBackground(Color.orange);
         add(pnlId);
         
         lblJudulForm = new JLabel("FORM PENDAFTARAN ANGGOTA PERPUSTAKAAN");
@@ -81,9 +89,9 @@ public class Pendaftaran extends JFrame {
         
         //Nama
         pnlNama = new JPanel();
-        pnlNama.setBounds(5, 60, 750, 100);
+        pnlNama.setBounds(5, 60, 500, 100);
         pnlNama.setLayout(null);
-        pnlNama.setBackground(Color.white);
+        pnlNama.setBackground(Color.orange);
         add(pnlNama);
         
         lblNama = new JLabel("Nama");
@@ -96,9 +104,9 @@ public class Pendaftaran extends JFrame {
         
         //Jenis Kelamin
         pnlJK = new JPanel();
-        pnlJK.setBounds(5, 110, 750, 100);
+        pnlJK.setBounds(5, 110, 500, 100);
         pnlJK.setLayout(null);
-        pnlJK.setBackground(Color.white);
+        pnlJK.setBackground(Color.orange);
         add(pnlJK);
         
         lblJK = new JLabel("Jenis Kelamin");
@@ -113,7 +121,7 @@ public class Pendaftaran extends JFrame {
         pnlTgLahir = new JPanel();
         pnlTgLahir.setBounds(5, 160, 500, 100);
         pnlTgLahir.setLayout(null);
-        pnlTgLahir.setBackground(Color.white);
+        pnlTgLahir.setBackground(Color.orange);
         add(pnlTgLahir);
         
         lblTgLahir = new JLabel("<html>Tanggal Lahir<br/>(dd-mm-yyyy)<html>");
@@ -126,9 +134,9 @@ public class Pendaftaran extends JFrame {
         
         //Alamat
         pnlAlamat = new JPanel();
-        pnlAlamat.setBounds(5, 210, 750, 100);
+        pnlAlamat.setBounds(5, 210, 500, 100);
         pnlAlamat.setLayout(null);
-        pnlAlamat.setBackground(Color.white);
+        pnlAlamat.setBackground(Color.orange);
         add(pnlAlamat);
         
         lblAlamat = new JLabel("Alamat");
@@ -141,9 +149,9 @@ public class Pendaftaran extends JFrame {
         
         //No. Telepon
         pnlNoTelp = new JPanel();
-        pnlNoTelp.setBounds(5, 260, 750, 100);
+        pnlNoTelp.setBounds(5, 260, 500, 100);
         pnlNoTelp.setLayout(null);
-        pnlNoTelp.setBackground(Color.white);
+        pnlNoTelp.setBackground(Color.orange);
         add(pnlNoTelp);
         
         lblNoTelp = new JLabel("No. Telepon");
@@ -156,9 +164,9 @@ public class Pendaftaran extends JFrame {
         
         //Email
         pnlEmail = new JPanel();
-        pnlEmail.setBounds(5, 310, 750, 100);
+        pnlEmail.setBounds(5, 310, 500, 100);
         pnlEmail.setLayout(null);
-        pnlEmail.setBackground(Color.white);
+        pnlEmail.setBackground(Color.orange);
         add(pnlEmail);
         
         lblEmail = new JLabel("Email");
@@ -169,13 +177,18 @@ public class Pendaftaran extends JFrame {
         txtEmail.setBounds(100, 45, 300, 35);
         pnlEmail.add(txtEmail);
         
+        //Icon
+        lblLibrary = new JLabel();
+        lblLibrary.setBounds(515, -35, 500, 500);
+        lblLibrary.setIcon(new ImageIcon(resizeImage("img/library.png")));
+        add(lblLibrary);
         
         //BUTTONS
         //Back
         pnlBtnBack = new JPanel();
         pnlBtnBack.setBounds(5, 370, 500, 100);
         pnlBtnBack.setLayout(null);
-        pnlBtnBack.setBackground(Color.white);
+        pnlBtnBack.setBackground(Color.orange);
         add(pnlBtnBack);
         
         btnBack = new JButton("Back");
@@ -195,7 +208,7 @@ public class Pendaftaran extends JFrame {
         pnlBtnSub = new JPanel();
         pnlBtnSub.setBounds(105, 370, 500, 100);
         pnlBtnSub.setLayout(null);
-        pnlBtnSub.setBackground(Color.white);
+        pnlBtnSub.setBackground(Color.orange);
         add(pnlBtnSub);
         
         btnSubmit = new JButton("Submit");
@@ -213,6 +226,17 @@ public class Pendaftaran extends JFrame {
     
     public static void main(String[] args) {
         new Pendaftaran().setVisible(true);
+    }
+    
+    private Image resizeImage(String url){
+        Image dimg = null;
+        try{
+            BufferedImage img = ImageIO.read(new File(url));
+            dimg = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        } catch(IOException ex){
+            ex.printStackTrace(System.err);
+        }
+        return dimg;
     }
     
 }
