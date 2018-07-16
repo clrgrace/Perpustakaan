@@ -1,3 +1,4 @@
+package View;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -232,6 +233,10 @@ public class MainMenuFrame extends JFrame{
             }
         });
         
+    }
+    
+    public static void main(String[] args) {
+        new MainMenuFrame().setVisible(true);
     }
     
     private JLabel lblUser = new JLabel();

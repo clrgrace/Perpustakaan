@@ -69,7 +69,7 @@ public class MenuPendaftaran extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 String[] invoke = {"test", "run"};
-                View.MainMenuFrame.main(invoke);
+                MainMenuFrame.main(invoke);
             }
         });
         pnlBtnBack.add(btnBack);

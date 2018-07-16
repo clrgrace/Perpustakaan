@@ -1,5 +1,6 @@
 
 import javax.swing.JComponent;
+import View.*;
 
 /**
  *

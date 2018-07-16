@@ -105,7 +105,7 @@ public class DetailHistory extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 String[] invoke = {"test", "run"};
-                View.MainMenuFrame.main(invoke);
+                MainMenuFrame.main(invoke);
             }
         });
         pnlTabel.add(btnOk);
