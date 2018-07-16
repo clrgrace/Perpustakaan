@@ -1,4 +1,3 @@
-package View;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,6 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,11 +32,10 @@ public class LoginFrame extends JFrame {
     }
     
     private void initComponents(){
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.setSize(500, 250);
         this.setLocationRelativeTo(null);
         
-//        this.getContentPane().setBackground(new Color(183, 157, 73));
         this.setTitle("Perpustakaan");
         this.getContentPane().setLayout(null); // jpanel position
         
@@ -43,8 +47,8 @@ public class LoginFrame extends JFrame {
         add(pnl1);
         
         lblTitle = new JLabel("LOGIN PETUGAS");
-        lblTitle.setBounds(185, 1, 130, 30);
-        lblTitle.setFont(new Font("Arial",Font.BOLD,15));
+        lblTitle.setBounds(180, 1, 140, 30);
+        lblTitle.setFont(new Font("Arial",Font.BOLD,16));
         pnl1.add(lblTitle);
         
         // JPanel
@@ -78,20 +82,25 @@ public class LoginFrame extends JFrame {
         
         lblForgot = new JLabel("Forgot Password?");
         lblForgot.setBounds(250, 135, 100, 50);
-        lblForgot.setFont(new Font("SERIF",Font.PLAIN,12));
+        lblForgot.setFont(new Font("Serif",Font.PLAIN,12));
         pnl2.add(lblForgot);
         
         btnSubmit.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                JOptionPane.showMessageDialog(null, "Welcome to Staff Page.");
+                onClickSubmit(ae);
             }
         });
         
         lblForgot.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
-                JOptionPane.showInputDialog("Please Enter New Password..");
+                String id = JOptionPane.showInputDialog("Enter Id Petugas..");
+                String email = JOptionPane.showInputDialog("Enter Email Petugas..");
+//                String newPass = JOptionPane.showInputDialog("Please Enter New Password..");
+//                String newPassConfirm = JOptionPane.showInputDialog("Re-enter New Password..");
+                
+                ChangePassword(id, email);
             }
 
             @Override
@@ -110,12 +119,6 @@ public class LoginFrame extends JFrame {
             public void mouseExited(MouseEvent me) {
             }
         });
-        
-                
-    }
-    
-    public static void main(String[] args) {
-        new LoginFrame().setVisible(true);
     }
     
     private JPanel pnl1 = new JPanel();
@@ -128,4 +131,77 @@ public class LoginFrame extends JFrame {
     private JButton btnSubmit = new JButton();
     private JLabel lblForgot = new JLabel();
 
+    private void onClickSubmit(ActionEvent ev){
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;    
+        
+        String username = txtUsername.getText() + "";
+        if(username.equals("")){
+            JOptionPane.showMessageDialog(null, "Please Enter Username");
+        }
+        else{
+            String sql = "SELECT * FROM petugas WHERE id_petugas=? AND password=?";
+            try{
+                 con = DriverManager.getConnection("jdbc:mysql://localhost/db_perpustakaan","root","");
+                 pst = con.prepareStatement(sql);
+                 pst.setString(1, txtUsername.getText());
+                 pst.setString(2, new String(txtPassword.getPassword()));
+                 
+                 rs = pst.executeQuery();
+                 if(rs.next()){
+                    dispose(); // untuk close
+                    JOptionPane.showMessageDialog(null, "Welcome, " + txtUsername.getText());
+                    MainMenuFrame mmFrame = new MainMenuFrame();
+                    mmFrame.setVisible(true);
+                 } 
+                 else{
+                    JOptionPane.showMessageDialog(null, "Wrong Username or Password");
+                 }
+            } 
+            catch(SQLException ex){
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+    }
+    
+    public void ChangePassword(String id, String em){
+        Connection con2 = null;
+        PreparedStatement pst2 = null;
+        ResultSet rs2 = null; 
+        
+        String sql = "SELECT * FROM petugas WHERE id_petugas=? AND email=?";
+        try{
+            con2 = DriverManager.getConnection("jdbc:mysql://localhost/db_perpustakaan","root","");
+            pst2 = con2.prepareStatement(sql);
+            pst2.setString(1, id);
+            pst2.setString(2, em);
+
+            rs2 = pst2.executeQuery();
+            if(rs2.next()){
+                String newPass = JOptionPane.showInputDialog("Please Enter New Password..");
+                String newPassConfirm = JOptionPane.showInputDialog("Re-enter New Password..");
+                
+//                if(newPass != newPassConfirm){
+                if(newPass.equals(newPassConfirm)){
+                    String sql2 = "UPDATE petugas SET password=? WHERE id_petugas=?";
+                    con2 = DriverManager.getConnection("jdbc:mysql://localhost/db_perpustakaan","root","");
+                    pst2 = con2.prepareStatement(sql2);
+                    pst2.setString(1, newPassConfirm);
+                    pst2.setString(2, id);
+                    
+                    pst2.execute();
+                    JOptionPane.showMessageDialog(null, "Change Password Success!");
+                } else{
+                    JOptionPane.showMessageDialog(null, "Wrong Password Confirmation!");
+                }
+            } 
+            else{
+               JOptionPane.showMessageDialog(null, "Petugas Not Found!");
+            }
+        } 
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
 }
