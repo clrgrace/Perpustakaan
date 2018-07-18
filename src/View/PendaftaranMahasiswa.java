@@ -20,9 +20,9 @@ import javax.swing.JTextField;
  *
  * @author Grace
  */
-public class Pendaftaran extends JFrame {
+public class PendaftaranMahasiswa extends JFrame {
     
-    public Pendaftaran(){
+    public PendaftaranMahasiswa(){
         initComponents();
     }
     
@@ -31,7 +31,7 @@ public class Pendaftaran extends JFrame {
         this.setSize(720, 640);
         this.setBounds(100, 200, 200, 100);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setTitle("Pendaftaran Anggota Perpustakaan");
+        this.setTitle("Pendaftaran Anggota Perpustakaan : MAHASISWA");
         
         //panel
         setSize(800, 500);
@@ -189,6 +189,17 @@ public class Pendaftaran extends JFrame {
         btnSubmit.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
+                String id = txtId.getText() + "";
+                String nama = txtNama.getText() + "";
+                String jk = txtJK.getText() + "";
+                String tglLahir = txtTgLahir.getText() + "";
+                String alamat = txtAlamat.getText() + "";
+                String noTelp = txtNoTelp.getText() + "";
+                String email = txtEmail.getText() + "";
+                
+                Model.Mahasiswa student = new Model.Mahasiswa(id, nama, jk, tglLahir, alamat, noTelp, email);
+                DAO.DataAkses.addMahasiswa(student);
+                
                 JOptionPane.showMessageDialog(null, "Data has been successfully submitted!");
             }
         });
@@ -196,7 +207,7 @@ public class Pendaftaran extends JFrame {
     }
     
     public static void main(String[] args) {
-        new Pendaftaran().setVisible(true);
+        new PendaftaranMahasiswa().setVisible(true);
     }
     
     private JPanel pnlId;

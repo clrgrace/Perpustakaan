@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class DataAkses {
     
+    //JACOB
     public static boolean logIn(String id, String pass){
         Connection con = null;
         PreparedStatement pst = null;
@@ -104,5 +105,66 @@ public class DataAkses {
         
         return out;
     }
-        
+    
+    
+    //GRACE
+    public static void addDosen(Model.Dosen dosen){
+        String query = "INSERT into peminjam values (?,?,?,?,?,?,?,?,?)";
+        try{
+            PreparedStatement st = ConnectionManager.getConnection().prepareStatement(query);
+            st.setString(1, dosen.getIdDosen());
+            st.setString(2, dosen.getNama());
+            st.setString(3, dosen.getJenisKelamin());
+            st.setString(4, dosen.getTglLahir());
+            st.setString(5, dosen.getAlamat());
+            st.setString(6, dosen.getNoTelepon());
+            st.setString(7, dosen.getEmail());
+            st.setInt(8, dosen.getTglGabung());
+            st.setString(9, dosen.getStatus());
+            
+            st.execute();
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static void addMahasiswa(Model.Mahasiswa mhs){
+        String query = "INSERT into peminjam values (?,?,?,?,?,?,?,?,?)";
+        try{
+            PreparedStatement st = ConnectionManager.getConnection().prepareStatement(query);
+            st.setString(1, mhs.getIdMahasiswa());
+            st.setString(2, mhs.getNama());
+            st.setString(3, mhs.getJenisKelamin());
+            st.setString(4, mhs.getTglLahir());
+            st.setString(5, mhs.getAlamat());
+            st.setString(6, mhs.getNoTelepon());
+            st.setString(7, mhs.getEmail());
+            st.setInt(8, mhs.getTglGabung());
+            st.setString(9, mhs.getStatus());
+            
+            st.execute();
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static void addTamu(Model.Tamu tamu){
+        String query = "INSERT into peminjam values (?,?,?,?,?,?,?,?,?)";
+        try{
+            PreparedStatement st = ConnectionManager.getConnection().prepareStatement(query);
+            st.setString(1, tamu.getIdKTP());
+            st.setString(2, tamu.getNama());
+            st.setString(3, tamu.getJenisKelamin());
+            st.setString(4, tamu.getTglLahir());
+            st.setString(5, tamu.getAlamat());
+            st.setString(6, tamu.getNoTelepon());
+            st.setString(7, tamu.getEmail());
+            st.setInt(8, tamu.getTglGabung());
+            st.setString(9, tamu.getStatus());
+            
+            st.execute();
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

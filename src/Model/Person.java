@@ -10,11 +10,11 @@ public abstract class Person {
     
     protected String nama;
     protected String jenisKelamin;
-    protected Calendar tglLahir;
+    protected String tglLahir;
     protected String alamat;
-    protected int noTelepon;
+    protected String noTelepon;
     protected String email;
-    protected Calendar tglGabung; // jadi anggota perpustakaan / petugas perpustakaan
+    protected int tglGabung; // jadi anggota perpustakaan / petugas perpustakaan
     
     public String getNama() {
         return nama;
@@ -32,11 +32,11 @@ public abstract class Person {
         this.jenisKelamin = jenisKelamin;
     }
 
-    public Calendar getTglLahir() {
+    public String getTglLahir() {
         return tglLahir;
     }
 
-    public void setTglLahir(Calendar tglLahir) {
+    public void setTglLahir(String tglLahir) {
         this.tglLahir = tglLahir;
     }
 
@@ -48,11 +48,11 @@ public abstract class Person {
         this.alamat = alamat;
     }
 
-    public int getNoTelepon() {
+    public String getNoTelepon() {
         return noTelepon;
     }
 
-    public void setNoTelepon(int noTelepon) {
+    public void setNoTelepon(String noTelepon) {
         this.noTelepon = noTelepon;
     }
 
@@ -64,11 +64,11 @@ public abstract class Person {
         this.email = email;
     }
     
-    public Calendar getTglGabung() {
+    public int getTglGabung() {
         return tglGabung;
     }
 
-    public void setTglGabung(Calendar tglGabung) {
+    public void setTglGabung(int tglGabung) {
         this.tglGabung = tglGabung;
     }
     

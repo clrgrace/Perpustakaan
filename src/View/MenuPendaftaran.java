@@ -92,7 +92,7 @@ public class MenuPendaftaran extends JFrame {
             @Override
             public void mouseClicked(MouseEvent me) {
                 String[] invoke = {"test", "run"};
-                View.Pendaftaran.main(invoke);
+                View.PendaftaranDosen.main(invoke);
             }
 
             @Override
@@ -136,7 +136,7 @@ public class MenuPendaftaran extends JFrame {
             @Override
             public void mouseClicked(MouseEvent me) {
                 String[] invoke = {"test", "run"};
-                View.Pendaftaran.main(invoke);
+                View.PendaftaranMahasiswa.main(invoke);
             }
 
             @Override
@@ -180,7 +180,7 @@ public class MenuPendaftaran extends JFrame {
             @Override
             public void mouseClicked(MouseEvent me) {
                 String[] invoke = {"test", "run"};
-                View.Pendaftaran.main(invoke);
+                View.PendaftaranTamu.main(invoke);
             }
 
             @Override
