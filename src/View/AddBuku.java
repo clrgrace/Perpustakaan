@@ -1,5 +1,6 @@
 package View;
 
+import DAO.DataAkses;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -11,33 +12,20 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
-public class AddOrEdit extends JFrame {
+public class AddBuku extends JFrame {
 
-    public AddOrEdit() {
+    public AddBuku() {
         initComponents();
-    }
-
-    private void onClickSubmit(MouseEvent evt) {
-        if (evt.toString().equalsIgnoreCase("submit")) {
-            JOptionPane.showMessageDialog(null, "Berhasil di submit");
-        } else {
-            JOptionPane.showMessageDialog(null, "Gagal di submit");
-        }
-    }
-
-    private void onClickCancel(MouseEvent evt) {
-        if (evt.toString().equalsIgnoreCase("submit")) {
-            JOptionPane.showMessageDialog(null, "Berhasil di cancel");
-        }
     }
 
     private void initComponents() {
         //frame
         this.setSize(720, 640);
         this.setBounds(100, 200, 200, 100);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setTitle("Add atau Edit Data Buku");
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setTitle("Add Buku");
         
         //panel
         setSize(800, 500);
@@ -131,11 +119,11 @@ public class AddOrEdit extends JFrame {
         pnlFiksiOrNon.setBackground(Color.orange);
         add(pnlFiksiOrNon);
         
-        lblLabelFiksiAtauNon = new JLabel("Fiksi/Non-Fiksi");
+        lblLabelFiksiAtauNon = new JLabel("Fiksi/NonFiksi");
         lblLabelFiksiAtauNon.setBounds(10, 45, 100, 35);
         pnlFiksiOrNon.add(lblLabelFiksiAtauNon);
         
-        Object[] arrPilih1 = {"Fiksi", "Non-Fiksi"};
+        Object[] arrPilih1 = {"Fiksi", "NonFiksi"};
         pilihanFiksiAtauNon = new JComboBox(arrPilih1);
         pilihanFiksiAtauNon.setBounds(100, 45, 300, 35);
         pnlFiksiOrNon.add(pilihanFiksiAtauNon);
@@ -151,15 +139,9 @@ public class AddOrEdit extends JFrame {
         lblLabelJenis.setBounds(10, 45, 100, 35);
         pnlJenis.add(lblLabelJenis);
         
-        if (pilihanFiksiAtauNon.getSelectedItem().toString().equalsIgnoreCase("fiksi")) {
-            Object[] arrPilih2 = {"Novel", "Cerpen", "Puisi", "Komik"};
-            pilihanJenis = new JComboBox(arrPilih2);
-        } else {
-            Object[] arrPilih2 = {"Pelajaran", "Biografi", "Jurnal", "Berita"};
-            pilihanJenis = new JComboBox(arrPilih2);
-        }
-        pilihanJenis.setBounds(100, 45, 300, 35);
-        pnlJenis.add(pilihanJenis);
+        txtJenis = new JTextField(20);
+        txtJenis.setBounds(100, 45, 300, 35);
+        pnlJenis.add(txtJenis);
 
         
         //BUTTONS
@@ -177,7 +159,19 @@ public class AddOrEdit extends JFrame {
         btnSubmit.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                onClickSubmit(e);
+                String kdB = txtTextFieldKodeBuku.getText();
+                String jdlB = txtTextFieldJudulBuku.getText();
+                String nmPgr = txtTextFieldNamaPengarang.getText();
+                String nmPbt = txtTextFieldJNamaPenerbit.getText();
+                String thnTbt = txtTextFieldTahunTerbit.getText();
+                String genre = pilihanFiksiAtauNon.getSelectedItem().toString();
+                String jenis = txtJenis.getText();
+                
+                if(DataAkses.addBuku(kdB,jdlB,nmPgr,nmPbt,thnTbt,genre,jenis)){
+                    JOptionPane.showMessageDialog(null, "Add Buku Sukses!");
+                    dispose();
+                    new MainMenuFrame().setVisible(true);
+                }
             }
         });
         pnlBtnSubmit.add(btnSubmit);
@@ -196,17 +190,14 @@ public class AddOrEdit extends JFrame {
         btnCancel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                onClickCancel(e);
+                dispose();
+                new MainMenuFrame().setVisible(true);
             }
         });
         pnlBtnCancel.add(btnCancel);
 
     }
-
-    public static void main(String[] args) {
-        new AddOrEdit().setVisible(true);
-    }
-
+    
     private JPanel pnlKode;
     private JPanel pnlJudul;
     private JPanel pnlPengarang;
@@ -230,7 +221,8 @@ public class AddOrEdit extends JFrame {
     private JLabel lblLabelFiksiAtauNon;
     private JComboBox pilihanFiksiAtauNon;
     private JLabel lblLabelJenis;
-    private JComboBox pilihanJenis;
+    private JTextField txtJenis;
+//    private JComboBox pilihanJenis;
     private JButton btnSubmit;
     private JButton btnCancel;
 }

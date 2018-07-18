@@ -1,6 +1,7 @@
 package View;
 
 import DAO.DataAkses;
+import Model.Petugas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -26,7 +27,8 @@ import javax.swing.WindowConstants;
  */
 public class MainMenuFrame extends JFrame{
     
-     public MainMenuFrame(){
+    
+    public MainMenuFrame(){
         initComponents();
     }
     
@@ -38,9 +40,9 @@ public class MainMenuFrame extends JFrame{
         this.getContentPane().setBackground(new Color(183, 157, 73));
         this.setTitle("Perpustakaan");
         this.getContentPane().setLayout(null); // jpanel position
-    
+        
         lblUser = new JLabel("Welcome to Library, ");
-        lblUser.setBounds(35, 2, 400, 100);
+        lblUser.setBounds(35, 2, 450, 100);
         lblUser.setFont(new Font("Arial",Font.BOLD,15));
         add(lblUser);
         
@@ -79,7 +81,8 @@ public class MainMenuFrame extends JFrame{
         lblIcon1.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
-                JOptionPane.showMessageDialog(null, "Please Input Book Name");
+                dispose();
+                new AddEditFrame().setVisible(true);
             }
 
             @Override
@@ -235,10 +238,6 @@ public class MainMenuFrame extends JFrame{
             }
         });
         
-    }
-    
-    public static void main(String[] args) {
-        new MainMenuFrame().setVisible(true);
     }
     
     private JLabel lblUser = new JLabel();

@@ -43,7 +43,7 @@ public class ConnectionManager {
     
     private static void logOff(){
         try{
-            connection.close();
+            connection = null;
         } catch(Exception e){
             e.printStackTrace(System.err);
         }
