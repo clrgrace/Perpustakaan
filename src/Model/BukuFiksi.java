@@ -1,3 +1,5 @@
+package Model;
+
 /**
  *
  * @author JC Krisna
