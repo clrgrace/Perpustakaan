@@ -33,6 +33,8 @@ class KonfirmasiPengembalian extends JFrame {
     private JButton button1Pnl3;
     private JButton button2Pnl3;
     
+    private JPanel panel4;
+    
     KonfirmasiPengembalian(Model.Buku buku){
         initComponent(buku);
     }
@@ -79,6 +81,10 @@ class KonfirmasiPengembalian extends JFrame {
         panel3.add(button2Pnl3);
         add(panel3,BorderLayout.SOUTH);
         
+        panel4 = new JPanel();
+        panel4.setBackground(Color.ORANGE);
+        add(panel4,BorderLayout.CENTER);
+        add(panel4,BorderLayout.EAST);
     }
     
 }
