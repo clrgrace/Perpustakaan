@@ -44,7 +44,6 @@ public class ConnectionManager {
     private static void logOff(){
         try{
             connection.close();
-            System.out.println("logOut!");
         } catch(Exception e){
             e.printStackTrace(System.err);
         }
