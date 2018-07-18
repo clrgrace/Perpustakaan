@@ -22,35 +22,6 @@ import javax.swing.JTextField;
  */
 public class Pendaftaran extends JFrame {
     
-    private JPanel pnlId;
-    private JPanel pnlNama;
-    private JPanel pnlJK;
-    private JPanel pnlTgLahir;
-    private JPanel pnlAlamat;
-    private JPanel pnlNoTelp;
-    private JPanel pnlEmail;
-    private JPanel pnlIcon;
-    private JPanel pnlBtnBack;
-    private JPanel pnlBtnSub;
-    private JButton btnBack;
-    private JButton btnSubmit;
-    private JLabel lblJudulForm;
-    private JLabel lblId;
-    private JLabel lblNama;
-    private JLabel lblJK;
-    private JLabel lblTgLahir;
-    private JLabel lblAlamat;
-    private JLabel lblNoTelp;
-    private JLabel lblEmail;
-    private JLabel lblLibrary;
-    private JTextField txtId;
-    private JTextField txtNama;
-    private JTextField txtJK;
-    private JTextField txtTgLahir;
-    private JTextField txtAlamat;
-    private JTextField txtNoTelp;
-    private JTextField txtEmail;
-    
     public Pendaftaran(){
         initComponents();
     }
@@ -227,6 +198,34 @@ public class Pendaftaran extends JFrame {
     public static void main(String[] args) {
         new Pendaftaran().setVisible(true);
     }
+    
+    private JPanel pnlId;
+    private JPanel pnlNama;
+    private JPanel pnlJK;
+    private JPanel pnlTgLahir;
+    private JPanel pnlAlamat;
+    private JPanel pnlNoTelp;
+    private JPanel pnlEmail;
+    private JPanel pnlBtnBack;
+    private JPanel pnlBtnSub;
+    private JButton btnBack;
+    private JButton btnSubmit;
+    private JLabel lblJudulForm;
+    private JLabel lblId;
+    private JLabel lblNama;
+    private JLabel lblJK;
+    private JLabel lblTgLahir;
+    private JLabel lblAlamat;
+    private JLabel lblNoTelp;
+    private JLabel lblEmail;
+    private JLabel lblLibrary;
+    private JTextField txtId;
+    private JTextField txtNama;
+    private JTextField txtJK;
+    private JTextField txtTgLahir;
+    private JTextField txtAlamat;
+    private JTextField txtNoTelp;
+    private JTextField txtEmail;
     
     private Image resizeImage(String url){
         Image dimg = null;
