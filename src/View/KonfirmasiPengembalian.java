@@ -6,8 +6,10 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.*;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
  *
@@ -36,11 +38,12 @@ class KonfirmasiPengembalian extends JFrame {
     }
     
     void initComponent(Model.Buku buku){
-        
-        setSize(360,360);
+        this.setTitle("Konfirmasi Pengembalian Buku");
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setSize(360,360);
         
         panel1 = new JPanel();
-        
+        panel1.setBackground(Color.orange);
         panel1.setLayout(new GridLayout(5,2));
         
         label1pnl1 = new JLabel("Kode buku");
@@ -69,6 +72,7 @@ class KonfirmasiPengembalian extends JFrame {
         
         
         panel3 = new JPanel();
+        panel3.setBackground(Color.orange);
         button1Pnl3 = new JButton("Confirm");
         button2Pnl3 = new JButton("Cancel");
         panel3.add(button1Pnl3);

@@ -6,6 +6,7 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -27,10 +28,13 @@ class Pengembalian extends JFrame {
     }
     
     void initComponent(){
-        setSize(300,100);
-        setLocationRelativeTo(null);
+        this.setSize(300,100);
+        this.setLocationRelativeTo(null);
+        this.setTitle("Search Buku : Pengembalian");
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         panel1 = new JPanel();
+        panel1.setBackground(Color.yellow);
         label1pnl1= new JLabel("Kode Buku");
         button1pnl1 = new JButton("Confirm");
         button2pnl1 = new JButton("Cancel");
@@ -40,6 +44,7 @@ class Pengembalian extends JFrame {
         panel1.add(txt1pnl1);
         
         panel2 = new JPanel();
+        panel2.setBackground(Color.yellow);
         button1pnl1.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
