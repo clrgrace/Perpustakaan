@@ -20,7 +20,7 @@ public class Function_PengembalianBuku {
     
     public Model.Buku Pengembalian(String kodeBuku){
         
-        Model.Buku buku = new Model.Buku();
+        Model.Buku buku = new Model.Buku() {};
         try {
             // TODO code application logic here
             Class.forName("com.mysql.jdbc.Driver");
