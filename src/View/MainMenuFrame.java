@@ -1,5 +1,6 @@
 package View;
 
+import DAO.DataAkses;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -55,10 +56,11 @@ public class MainMenuFrame extends JFrame{
         btnLogout.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                int r = JOptionPane.showConfirmDialog(null, "Are you sure? ", "Logout", JOptionPane.YES_NO_OPTION);
-                if(r == JOptionPane.YES_OPTION){
-                    JOptionPane.showMessageDialog(null, "Thankyou for using this program");
+                if(DataAkses.logOut()){
                     dispose();
+                    JOptionPane.showMessageDialog(null, "Thankyou for using this program");
+                    LoginFrame loginf = new LoginFrame();
+                    loginf.setVisible(true);
                 }
             }
         });

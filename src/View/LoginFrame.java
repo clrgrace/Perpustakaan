@@ -1,5 +1,6 @@
 package View;
 
+import DAO.DataAkses;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -89,7 +90,15 @@ public class LoginFrame extends JFrame {
         btnSubmit.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                onClickSubmit(ae);
+                String id = new String(txtUsername.getText());
+                String pass = new String(txtPassword.getPassword());
+                
+                if(DataAkses.logIn(id,pass) == true){
+                    dispose();
+                    JOptionPane.showMessageDialog(null, "Welcome, " + id);
+                    MainMenuFrame mmFrame = new MainMenuFrame();
+                    mmFrame.setVisible(true);
+                }
             }
         });
         
@@ -98,10 +107,8 @@ public class LoginFrame extends JFrame {
             public void mouseClicked(MouseEvent me) {
                 String id = JOptionPane.showInputDialog("Enter Id Petugas..");
                 String email = JOptionPane.showInputDialog("Enter Email Petugas..");
-//                String newPass = JOptionPane.showInputDialog("Please Enter New Password..");
-//                String newPassConfirm = JOptionPane.showInputDialog("Re-enter New Password..");
                 
-                ChangePassword(id, email);
+                DataAkses.forgotPassword(id, email);
             }
 
             @Override
@@ -131,78 +138,5 @@ public class LoginFrame extends JFrame {
     private JPasswordField txtPassword = new JPasswordField();
     private JButton btnSubmit = new JButton();
     private JLabel lblForgot = new JLabel();
-
-    private void onClickSubmit(ActionEvent ev){
-        Connection con = null;
-        PreparedStatement pst = null;
-        ResultSet rs = null;    
-        
-        String username = txtUsername.getText() + "";
-        if(username.equals("")){
-            JOptionPane.showMessageDialog(null, "Please Enter Username");
-        }
-        else{
-            String sql = "SELECT * FROM petugas WHERE id_petugas=? AND password=?";
-            try{
-                 con = DriverManager.getConnection("jdbc:mysql://localhost/db_perpustakaan","root","");
-                 pst = con.prepareStatement(sql);
-                 pst.setString(1, txtUsername.getText());
-                 pst.setString(2, new String(txtPassword.getPassword()));
-                 
-                 rs = pst.executeQuery();
-                 if(rs.next()){
-                    dispose(); // untuk close
-                    JOptionPane.showMessageDialog(null, "Welcome, " + txtUsername.getText());
-                    MainMenuFrame mmFrame = new MainMenuFrame();
-                    mmFrame.setVisible(true);
-                 } 
-                 else{
-                    JOptionPane.showMessageDialog(null, "Wrong Username or Password");
-                 }
-            } 
-            catch(SQLException ex){
-                JOptionPane.showMessageDialog(null, ex);
-            }
-        }
-    }
     
-    public void ChangePassword(String id, String em){
-        Connection con2 = null;
-        PreparedStatement pst2 = null;
-        ResultSet rs2 = null; 
-        
-        String sql = "SELECT * FROM petugas WHERE id_petugas=? AND email=?";
-        try{
-            con2 = DriverManager.getConnection("jdbc:mysql://localhost/db_perpustakaan","root","");
-            pst2 = con2.prepareStatement(sql);
-            pst2.setString(1, id);
-            pst2.setString(2, em);
-
-            rs2 = pst2.executeQuery();
-            if(rs2.next()){
-                String newPass = JOptionPane.showInputDialog("Please Enter New Password..");
-                String newPassConfirm = JOptionPane.showInputDialog("Re-enter New Password..");
-                
-//                if(newPass != newPassConfirm){
-                if(newPass.equals(newPassConfirm)){
-                    String sql2 = "UPDATE petugas SET password=? WHERE id_petugas=?";
-                    con2 = DriverManager.getConnection("jdbc:mysql://localhost/db_perpustakaan","root","");
-                    pst2 = con2.prepareStatement(sql2);
-                    pst2.setString(1, newPassConfirm);
-                    pst2.setString(2, id);
-                    
-                    pst2.execute();
-                    JOptionPane.showMessageDialog(null, "Change Password Success!");
-                } else{
-                    JOptionPane.showMessageDialog(null, "Wrong Password Confirmation!");
-                }
-            } 
-            else{
-               JOptionPane.showMessageDialog(null, "Petugas Not Found!");
-            }
-        } 
-        catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }
 }

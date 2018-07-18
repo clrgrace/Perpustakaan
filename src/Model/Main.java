@@ -1,3 +1,4 @@
+package Model;
 
 import javax.swing.JComponent;
 import View.*;
@@ -6,9 +7,7 @@ import View.*;
  *
  * @author JC Krisna
  */
-public class Login {
-    
-    
+public class Main {
     
     public static void main(String[] args) {
         LoginFrame loginf = new LoginFrame();
