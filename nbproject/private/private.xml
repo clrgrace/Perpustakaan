@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/E:/ITHB/SP%202/PBO/GitHub/Perpustakaan/src/Model/Petugas.java</file>
             <file>file:/E:/ITHB/SP%202/PBO/GitHub/Perpustakaan/src/View/AddBuku.java</file>
             <file>file:/E:/ITHB/SP%202/PBO/GitHub/Perpustakaan/src/Model/Main.java</file>
@@ -13,6 +14,9 @@
             <file>file:/E:/ITHB/SP%202/PBO/GitHub/Perpustakaan/src/DAO/ConnectionManager.java</file>
             <file>file:/E:/ITHB/SP%202/PBO/GitHub/Perpustakaan/src/DAO/DataAkses.java</file>
             <file>file:/E:/ITHB/SP%202/PBO/GitHub/Perpustakaan/src/View/LoginFrame.java</file>
+=======
+            <file>file:/D:/ITHB/SP%201%20(2018)/PBO/Tubes%20Kelompok%206/Perpustakaan/src/View/Pendaftaran.java</file>
+>>>>>>> 15bf03ab3dfb2b38797f10067c721df91d6cc0cf
         </group>
     </open-files>
 </project-private>
