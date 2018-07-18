@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package UI;
 
 import java.awt.BorderLayout;
 import javax.swing.*;
@@ -27,7 +27,7 @@ class Search extends JFrame{
     private JButton button4Pnl2;
     private JButton button5Pnl2;
     
-    private JPanel panel3;
+    private JScrollPane panel3;
     private JTable table1Pnl3;
     
     private JPanel panel4;
@@ -66,10 +66,10 @@ class Search extends JFrame{
         panel2.add(button5Pnl2);
         add(panel2,BorderLayout.WEST);
         
-        panel3 = new JPanel();
+        
         String book [] = {"a","b","c","d","e"};
         table1Pnl3 = new JTable(30,5);
-        panel3.add(table1Pnl3);
+        panel3 = new JScrollPane(table1Pnl3);
         add(panel3,BorderLayout.CENTER);
         
         panel4 = new JPanel();

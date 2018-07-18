@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package UI;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -34,7 +34,7 @@ class Pinjam extends JFrame {
     }
     
     void initComponent(){
-        setSize(400,400);
+        setSize(400,200);
         setLocationRelativeTo(null);
         
         panel1 = new JPanel();
@@ -67,7 +67,7 @@ class Pinjam extends JFrame {
         panel2.add(button1pnl1);
         panel2.add(button2pnl1);
         
-        add(panel1,BorderLayout.WEST);
+        add(panel1,BorderLayout.CENTER);
         add(panel2,BorderLayout.SOUTH);
     }
     
