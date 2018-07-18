@@ -55,6 +55,18 @@ public class DataAkses {
         return found;
     }
    
+    public static boolean logOut(){
+        boolean out = false;
+        int r = JOptionPane.showConfirmDialog(null, "Are you sure? ", "Logout", JOptionPane.YES_NO_OPTION);
+        
+        if(r == JOptionPane.YES_OPTION){
+            ConnectionManager.cutConnection();
+            out = true;
+        }
+        
+        return out;
+    }
+    
     public static void forgotPassword(String id, String em){
         Connection con2 = null;
         PreparedStatement pst2 = null;
@@ -94,17 +106,35 @@ public class DataAkses {
         }
     }
     
-    public static boolean logOut(){
-        boolean out = false;
-        int r = JOptionPane.showConfirmDialog(null, "Are you sure? ", "Logout", JOptionPane.YES_NO_OPTION);
         
-        if(r == JOptionPane.YES_OPTION){
-            ConnectionManager.cutConnection();
-            out = true;
+    public static boolean addBuku(String kB, String jB, String nPeng, String nPen, String tT, String gen, String jen){
+        boolean add = false;
+        Connection con3 = null;
+        PreparedStatement pst3 = null;
+        
+        String sql = "INSERT INTO buku (kode_buku,judul_buku,nama_pengarang,nama_penerbit,tahun_terbit,jenis_buku,spesifikasi_buku,available) "
+                     + " VALUES (?,?,?,?,?,?,?,?)";
+        try{
+            con3 = ConnectionManager.getConnection();
+            pst3 = con3.prepareStatement(sql);
+            pst3.setString(1, kB);
+            pst3.setString(2, jB);
+            pst3.setString(3, nPeng);
+            pst3.setString(4, nPen);
+            pst3.setString(5, tT);
+            pst3.setString(6, gen);
+            pst3.setString(7, jen);
+            pst3.setString(8, "Y");
+
+            pst3.execute();
+            add = true;
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
         }
         
-        return out;
+        return add;
     }
+<<<<<<< HEAD
     
     
     //GRACE
@@ -167,4 +197,6 @@ public class DataAkses {
             e.printStackTrace();
         }
     }
+=======
+>>>>>>> 532265e9d1aa699e3873d1cb2852afceb2da918d
 }

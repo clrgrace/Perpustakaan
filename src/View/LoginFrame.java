@@ -1,6 +1,7 @@
 package View;
 
 import DAO.DataAkses;
+import Model.Petugas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -28,7 +29,7 @@ import javax.swing.WindowConstants;
  * @author JC Krisna
  */
 public class LoginFrame extends JFrame {
-    
+
     public LoginFrame(){
         initComponents();
     }
@@ -93,7 +94,7 @@ public class LoginFrame extends JFrame {
                 String id = new String(txtUsername.getText());
                 String pass = new String(txtPassword.getPassword());
                 
-                if(DataAkses.logIn(id,pass) == true){
+                if(DataAkses.logIn(id,pass)){
                     dispose();
                     JOptionPane.showMessageDialog(null, "Welcome, " + id);
                     MainMenuFrame mmFrame = new MainMenuFrame();
