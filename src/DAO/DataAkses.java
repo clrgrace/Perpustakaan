@@ -134,8 +134,6 @@ public class DataAkses {
         
         return add;
     }
-<<<<<<< HEAD
-    
     
     //GRACE
     public static void addDosen(Model.Dosen dosen){
@@ -197,6 +195,5 @@ public class DataAkses {
             e.printStackTrace();
         }
     }
-=======
->>>>>>> 532265e9d1aa699e3873d1cb2852afceb2da918d
+
 }

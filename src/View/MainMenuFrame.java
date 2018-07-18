@@ -240,6 +240,10 @@ public class MainMenuFrame extends JFrame{
         
     }
     
+    public static void main(String[] args) {
+        new MainMenuFrame().setVisible(true);
+    }
+    
     private JLabel lblUser = new JLabel();
     private JLabel lblTitle = new JLabel();
     private JButton btnLogout = new JButton();
