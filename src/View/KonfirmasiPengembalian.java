@@ -8,6 +8,8 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -56,8 +58,8 @@ class KonfirmasiPengembalian extends JFrame {
         label5pnl1 = new JLabel("Denda");
         label6pnl1 = new JLabel(buku.getKodeBuku());
         label7pnl1 = new JLabel(buku.getJudulBuku());
-        label8pnl1 = new JLabel("Denda");
-        label9pnl1 = new JLabel("Denda");
+        label8pnl1 = new JLabel("");
+        label9pnl1 = new JLabel("");
         label10pnl1 = new JLabel("Denda");
         
         panel1.add(label1pnl1);
@@ -77,7 +79,21 @@ class KonfirmasiPengembalian extends JFrame {
         panel3 = new JPanel();
         panel3.setBackground(Color.orange);
         button1Pnl3 = new JButton("Confirm");
+        button1Pnl3.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent e){
+               DAO.DataAkses.deleteTranksaksi(Integer.parseInt(label6pnl1.getText()));
+               dispose();
+           }
+        });
         button2Pnl3 = new JButton("Cancel");
+        button2Pnl3.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+            
+        });
         panel3.add(button1Pnl3);
         panel3.add(button2Pnl3);
         add(panel3,BorderLayout.SOUTH);

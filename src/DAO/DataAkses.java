@@ -171,13 +171,12 @@ public class DataAkses {
     public static List<BukuFiksi> showBuku(String x,String y){
         List <BukuFiksi> listBukuFiksi = new ArrayList<>();
         
-        String query = "SELECT * FROM buku where ? = ?";
+        String query = "SELECT * FROM buku where "+ x +" = ?";
         
         try{
             Connection con4 = ConnectionManager.getConnection();
             PreparedStatement st4 = con4.prepareStatement(query);
-            st4.setString(1,x);
-            st4.setString(2,y);
+            st4.setString(1,y);
             ResultSet rs4 = st4.executeQuery();
             while(rs4.next()){
                 BukuFiksi b = new BukuFiksi();
@@ -212,6 +211,20 @@ public class DataAkses {
             
             st5.execute();
             JOptionPane.showMessageDialog(null, "Delete Sukses!");
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static void deleteTranksaksi(int kode){
+        
+        String query = "DELETE FROM tranksaksi WHERE kode_buku = ?";
+        try{
+            Connection con5 = ConnectionManager.getConnection();
+            PreparedStatement st5 = con5.prepareStatement(query);
+            st5.setInt(1, kode);
+            st5.execute();
+            
         } catch (SQLException e){
             e.printStackTrace();
         }

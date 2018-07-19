@@ -40,31 +40,37 @@ class Search extends JFrame{
     
     private static List <Model.BukuFiksi> bookList;
     
-    public Search(){
-        initComponent();
+    public Search(List <Model.BukuFiksi> bookList){
+        initComponent(bookList);
     }
     
-    String[][] bookTable(List <Model.BukuFiksi> bookList){
-        String book[][] = new String[bookList.size()][5];
+    void bookTable(List <Model.BukuFiksi> bookList){
+        String book [] = {"Kode Buku","Judul Buku","Penulis","Penerbit","Tahun Terbit"};
+        String buku[][] = new String[bookList.size()][5];
+        
         int i = 0;
-        for(Model.BukuFiksi buku : bookList){
-            book[i][0]= buku.getKodeBuku();
-            book[i][1]= buku.getJudulBuku();
-            book[i][2]= buku.getNamaPengarang();
-            book[i][3]= buku.getNamaPenerbit();
-            book[i][4]= String.valueOf(buku.getTahunTerbit());
+        for(Model.BukuFiksi bookL : bookList){
+            buku[i][0]= bookL.getKodeBuku();
+            buku[i][1]= bookL.getJudulBuku();
+            buku[i][2]= bookL.getNamaPengarang();
+            buku[i][3]= bookL.getNamaPenerbit();
+            buku[i][4]= String.valueOf(bookL.getTahunTerbit());
             i++;
         }
-        return book;
+        DefaultTableModel dtm = new DefaultTableModel(buku,book);
+        
+        table1Pnl3 = new JTable();
+        table1Pnl3.setModel(dtm);
+        panel3 = new JScrollPane(table1Pnl3);
+        panel3.setViewportView(table1Pnl3);
+        add(panel3,BorderLayout.CENTER);
         
     }
     
-    public void initComponent(){
+    public void initComponent(List <Model.BukuFiksi> BookList){
         setSize(500,500);
         setLocationRelativeTo(null);
         setTitle("Search");
-        
-        bookList = DAO.DataAkses.showBuku();
         
         panel1 = new JPanel();
         panel1.setSize(1366,200);
@@ -77,7 +83,7 @@ class Search extends JFrame{
         panel2 = new JPanel();
         button1Pnl2 = new JButton("Title");
         button2Pnl2 = new JButton("Author");
-        button3Pnl2 = new JButton("ISBN");
+        button3Pnl2 = new JButton("Kode Buku");
         button4Pnl2 = new JButton("Penerbit");
         button5Pnl2 = new JButton("Default");
         
@@ -85,30 +91,35 @@ class Search extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 bookList = DAO.DataAkses.showBuku("judul_buku",textFieldPnl1.getText());
+                
             }
         });
         button2Pnl2.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 bookList = DAO.DataAkses.showBuku("nama_pengarang",textFieldPnl1.getText());
+                
             }
         });
         button3Pnl2.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 bookList = DAO.DataAkses.showBuku("kode_buku",textFieldPnl1.getText());
+                
             }
         });
         button4Pnl2.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 bookList = DAO.DataAkses.showBuku("nama_penerbit",textFieldPnl1.getText());
+                
             }
         });
         button5Pnl2.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 bookList = DAO.DataAkses.showBuku();
+                
             }
         });
         
@@ -120,25 +131,22 @@ class Search extends JFrame{
         panel2.add(button5Pnl2);
         add(panel2,BorderLayout.WEST);
         
-        String book [] = {"Kode Buku","Judul Buku","Penulis","Penerbit","Tahun Terbit"};
-        
-        DefaultTableModel dtm = new DefaultTableModel(bookTable(bookList),book);
-        table1Pnl3 = new JTable();
-        table1Pnl3.setModel(dtm);
-        panel3 = new JScrollPane(table1Pnl3);
-        panel3.setViewportView(table1Pnl3);
-        add(panel3,BorderLayout.CENTER);
+        bookTable(bookList);
         
         panel4 = new JPanel();
         button1Pnl4 = new JButton("Pinjam");
         button2Pnl4 = new JButton("Find");
+        button2Pnl4.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Search(bookList).setVisible(true);
+                dispose();
+            }
+        });
         panel4.add(button1Pnl4,BorderLayout.EAST);
         panel4.add(button2Pnl4,BorderLayout.EAST);
         add(panel4,BorderLayout.SOUTH);
         
     }
     
-    public static void main(String[] args) {
-        new Search().setVisible(true);
-    }
 }

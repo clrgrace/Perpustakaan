@@ -50,11 +50,12 @@ class Pengembalian extends JFrame {
             public void actionPerformed(ActionEvent e){
                 Function.Function_PengembalianBuku pengembalian = new Function.Function_PengembalianBuku();
                 Model.Buku buku = pengembalian.Pengembalian(txt1pnl1.getText());
-                if(buku == null){
+                if(buku.getKodeBuku() == null){
                     JOptionPane.showMessageDialog(null,"Kode Buku Tidak Ada");
                 }
                 else{
-                    KonfirmasiPengembalian confirm = new KonfirmasiPengembalian(buku);
+                KonfirmasiPengembalian confirm = new KonfirmasiPengembalian(buku);
+                confirm.setVisible(true);
                 }
             }
         });

@@ -8,6 +8,7 @@ package Function;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,7 +21,7 @@ public class Function_PengembalianBuku {
     
     public Model.Buku Pengembalian(String kodeBuku){
         
-        Model.Buku buku = new Model.Buku() {};
+        Model.BukuFiksi buku = new Model.BukuFiksi();
         try {
             // TODO code application logic here
             Class.forName("com.mysql.jdbc.Driver");
@@ -30,11 +31,13 @@ public class Function_PengembalianBuku {
             stmt.setString(1,kodeBuku);
             rs =stmt.executeQuery();
             while(rs.next()){
-                buku.setJudulBuku(rs.getString("judul_buku"));
-                buku.setKodeBuku(kodeBuku);
-                buku.setNamaPenerbit(rs.getString("nama_penerbit"));
-                buku.setNamaPengarang(rs.getString("nama_pengarang"));
-                buku.setTahunTerbit(rs.getInt("tahun_terbit"));
+                if(rs.getInt("kode_buku") == Integer.parseInt(kodeBuku)){
+                    buku.setJudulBuku(rs.getString("judul_buku"));
+                    buku.setKodeBuku(kodeBuku);
+                    buku.setNamaPenerbit(rs.getString("nama_penerbit"));
+                    buku.setNamaPengarang(rs.getString("nama_pengarang"));
+                    buku.setTahunTerbit(rs.getInt("tahun_terbit"));
+                }
             }
         }
         catch (SQLException ex) {
@@ -43,6 +46,8 @@ public class Function_PengembalianBuku {
         catch (ClassNotFoundException ex) {
             Logger.getLogger(Function_PengembalianBuku.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
         return buku;
     }
 }
