@@ -45,19 +45,19 @@ class Search extends JFrame{
     }
     
     String[][] bookTable(List <Model.BukuFiksi> bookList){
-    String book[][] = new String[bookList.size()][5];
-    int i = 0;
-    for(Model.BukuFiksi buku : bookList){
-        book[i][0]= buku.getKodeBuku();
-        book[i][1]= buku.getJudulBuku();
-        book[i][2]= buku.getNamaPengarang();
-        book[i][3]= buku.getNamaPenerbit();
-        book[i][4]= String.valueOf(buku.getTahunTerbit());
-        i++;
-    }
+        String book[][] = new String[bookList.size()][5];
+        int i = 0;
+        for(Model.BukuFiksi buku : bookList){
+            book[i][0]= buku.getKodeBuku();
+            book[i][1]= buku.getJudulBuku();
+            book[i][2]= buku.getNamaPengarang();
+            book[i][3]= buku.getNamaPenerbit();
+            book[i][4]= String.valueOf(buku.getTahunTerbit());
+            i++;
+        }
         return book;
-    
-}
+        
+    }
     
     public void initComponent(){
         setSize(500,500);
@@ -138,4 +138,7 @@ class Search extends JFrame{
         
     }
     
+    public static void main(String[] args) {
+        new Search().setVisible(true);
+    }
 }
