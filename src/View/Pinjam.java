@@ -6,6 +6,7 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -75,6 +76,8 @@ class Pinjam extends JFrame {
                 dispose();
             }
         });
+        panel1.setBackground(Color.ORANGE);
+        panel2.setBackground(Color.ORANGE);
         panel2.add(button1pnl1);
         panel2.add(button2pnl1);
         
@@ -82,7 +85,4 @@ class Pinjam extends JFrame {
         add(panel2,BorderLayout.SOUTH);
     }
     
-    public static void main(String[] args) {
-        new Pinjam().setVisible(true);
-    }
 }
