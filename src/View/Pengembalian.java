@@ -31,7 +31,7 @@ class Pengembalian extends JFrame {
         this.setSize(300,100);
         this.setLocationRelativeTo(null);
         this.setTitle("Search Buku : Pengembalian");
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         panel1 = new JPanel();
         panel1.setBackground(Color.yellow);
