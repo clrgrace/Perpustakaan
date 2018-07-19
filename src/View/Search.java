@@ -57,7 +57,6 @@ class Search extends JFrame{
         button3Pnl2 = new JButton("ISBN");
         button4Pnl2 = new JButton("");
         button5Pnl2 = new JButton("");
-//        button1Pnl2.setSize(100,200);
         panel2.setLayout(new GridLayout(5,1));
         panel2.add(button1Pnl2);
         panel2.add(button2Pnl2);

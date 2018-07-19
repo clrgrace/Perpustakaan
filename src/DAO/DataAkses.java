@@ -168,6 +168,39 @@ public class DataAkses {
         return listBukuFiksi;
     }
     
+    public static List<BukuFiksi> showBuku(String x,String y){
+        List <BukuFiksi> listBukuFiksi = new ArrayList<>();
+        
+        String query = "SELECT * FROM buku where ? = ?";
+        
+        try{
+            Connection con4 = ConnectionManager.getConnection();
+            PreparedStatement st4 = con4.prepareStatement(query);
+            st4.setString(1,x);
+            st4.setString(2,y);
+            ResultSet rs4 = st4.executeQuery();
+            while(rs4.next()){
+                BukuFiksi b = new BukuFiksi();
+                b.setKodeBuku(rs4.getString("kode_buku"));
+                b.setJudulBuku(rs4.getString("judul_buku"));
+                b.setNamaPengarang(rs4.getString("nama_pengarang"));
+                b.setNamaPenerbit(rs4.getString("nama_penerbit"));
+                b.setTahunTerbit(rs4.getInt("tahun_terbit"));
+                b.setJenisBuku(rs4.getString("jenis_buku"));
+                b.setJenisFiksi(rs4.getString("spesifikasi_buku"));
+                b.setAvailable("available");
+                
+                listBukuFiksi.add(b);
+            }
+            
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        return listBukuFiksi;
+    }
+
+    
     public static void deleteBuku(int kode){
         
         String query = "DELETE FROM buku WHERE kode_buku = ?";
