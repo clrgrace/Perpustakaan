@@ -37,7 +37,7 @@ class Pinjam extends JFrame {
     }
     
     void initComponent(){
-        setSize(250,150);
+        setSize(400,150);
         setLocationRelativeTo(null);
         
         panel1 = new JPanel();
@@ -51,7 +51,7 @@ class Pinjam extends JFrame {
         label2pnl1 = new JLabel ("Status");
         txt2pnl1 = new JTextField(1);
         panel1.add(label2pnl1);
-        panel1.add(txt1pnl1);
+        panel1.add(txt2pnl1);
         
         label3pnl1 = new JLabel("ID");
         txt3pnl1= new JTextField(1);

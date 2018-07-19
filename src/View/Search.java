@@ -67,6 +67,7 @@ class Search extends JFrame{
         table1Pnl3.setModel(dtm);
         panel3 = new JScrollPane(table1Pnl3);
         panel3.setViewportView(table1Pnl3);
+        panel3.setBackground(Color.ORANGE);
         add(panel3,BorderLayout.CENTER);
         
     }
