@@ -56,6 +56,7 @@ class Pengembalian extends JFrame {
                 else{
                     KonfirmasiPengembalian confirm = new KonfirmasiPengembalian(buku);
                     confirm.setVisible(true);
+                    dispose();
                 }
             }
         });

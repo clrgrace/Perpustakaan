@@ -6,6 +6,7 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -38,9 +39,12 @@ class Search extends JFrame{
     private JButton button1Pnl4;
     private JButton button2Pnl4;
     
+    private JPanel panel5;
+    
     private static List <Model.BukuFiksi> bookList;
     
     public Search(List <Model.BukuFiksi> bookList){
+        this.bookList = bookList;
         initComponent(bookList);
     }
     
@@ -54,7 +58,7 @@ class Search extends JFrame{
             buku[i][1]= bookL.getJudulBuku();
             buku[i][2]= bookL.getNamaPengarang();
             buku[i][3]= bookL.getNamaPenerbit();
-            buku[i][4]= String.valueOf(bookL.getTahunTerbit());
+            buku[i][4]= DAO.DataAkses.checkAvaiblity(bookL.getKodeBuku());
             i++;
         }
         DefaultTableModel dtm = new DefaultTableModel(buku,book);
@@ -63,6 +67,7 @@ class Search extends JFrame{
         table1Pnl3.setModel(dtm);
         panel3 = new JScrollPane(table1Pnl3);
         panel3.setViewportView(table1Pnl3);
+        panel3.setBackground(Color.ORANGE);
         add(panel3,BorderLayout.CENTER);
         
     }
@@ -78,6 +83,7 @@ class Search extends JFrame{
         panel1.add(labelPnl1,BorderLayout.CENTER);
         textFieldPnl1= new JTextField(32);
         panel1.add(textFieldPnl1);
+        panel1.setBackground(Color.ORANGE);
         add(panel1,BorderLayout.NORTH);
         
         panel2 = new JPanel();
@@ -87,6 +93,7 @@ class Search extends JFrame{
         button4Pnl2 = new JButton("Penerbit");
         button5Pnl2 = new JButton("Default");
         
+        panel2.setBackground(Color.ORANGE);
         button1Pnl2.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -150,10 +157,14 @@ class Search extends JFrame{
                 dispose();
             }
         });
-        panel4.add(button1Pnl4,BorderLayout.EAST);
-        panel4.add(button2Pnl4,BorderLayout.EAST);
+        panel4.add(button1Pnl4);
+        panel4.add(button2Pnl4);
+        panel4.setBackground(Color.ORANGE);
         add(panel4,BorderLayout.SOUTH);
         
+        panel5 = new JPanel();
+        panel5.setBackground(Color.ORANGE);
+        add(panel5,BorderLayout.EAST);
     }
     
 }

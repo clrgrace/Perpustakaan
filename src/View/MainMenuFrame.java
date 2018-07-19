@@ -150,7 +150,7 @@ public class MainMenuFrame extends JFrame{
         lblIcon3.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
-                JOptionPane.showMessageDialog(null, "Please Input Date of Borrows");
+                new Search(DAO.DataAkses.showBuku()).setVisible(true);
             }
 
             @Override
@@ -184,7 +184,7 @@ public class MainMenuFrame extends JFrame{
         lblIcon4.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
-                JOptionPane.showMessageDialog(null, "Please Input Date of Returns");
+                new Pengembalian().setVisible(true);
             }
 
             @Override

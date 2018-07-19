@@ -6,6 +6,7 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,16 +37,21 @@ class Pinjam extends JFrame {
     }
     
     void initComponent(){
-        setSize(250,150);
+        setSize(400,150);
         setLocationRelativeTo(null);
         
         panel1 = new JPanel();
-        panel1.setLayout(new GridLayout(3,1));
+        panel1.setLayout(new GridLayout(4,1));
         
         label1pnl1 = new JLabel("Kode Buku");
         txt1pnl1 = new JTextField(1);
         panel1.add(label1pnl1);
         panel1.add(txt1pnl1);
+        
+        label2pnl1 = new JLabel ("Status");
+        txt2pnl1 = new JTextField(1);
+        panel1.add(label2pnl1);
+        panel1.add(txt2pnl1);
         
         label3pnl1 = new JLabel("ID");
         txt3pnl1= new JTextField(1);
@@ -54,7 +60,6 @@ class Pinjam extends JFrame {
         
         label4pnl1 = new JLabel("Tanggal Pinjam");
         txt4pnl1= new JTextField(1);
-        txt4pnl1.setEditable(false);
         panel1.add(label4pnl1);
         panel1.add(txt4pnl1);
         
@@ -65,6 +70,7 @@ class Pinjam extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DAO.DataAkses.updateAvaiblity("N",txt1pnl1.getText());
+                DAO.DataAkses.lend(txt1pnl1.getText(),txt2pnl1.getText() , txt3pnl1.getText(), txt4pnl1.getText());
                 dispose();
             }
         });
@@ -75,6 +81,8 @@ class Pinjam extends JFrame {
                 dispose();
             }
         });
+        panel1.setBackground(Color.ORANGE);
+        panel2.setBackground(Color.ORANGE);
         panel2.add(button1pnl1);
         panel2.add(button2pnl1);
         
@@ -82,7 +90,4 @@ class Pinjam extends JFrame {
         add(panel2,BorderLayout.SOUTH);
     }
     
-    public static void main(String[] args) {
-        new Pinjam().setVisible(true);
-    }
 }
