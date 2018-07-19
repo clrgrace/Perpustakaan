@@ -58,9 +58,9 @@ public class AddEditFrame extends JFrame{
             });
     }
     
-    public static void main(String[] args) {
-        new AddEditFrame().setVisible(true);
-    }
+//    public static void main(String[] args) {
+//        new AddEditFrame().setVisible(true);
+//    }
     
     private JPanel pnl1 = new JPanel();
     private JButton btnAdd = new JButton();

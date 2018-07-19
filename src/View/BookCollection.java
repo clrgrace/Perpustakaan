@@ -47,6 +47,16 @@ public class BookCollection extends JFrame{
         btnUpdate.setBounds(320,420,150,40);
         add(btnUpdate);
         
+        btnUpdate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                int kode = Integer.parseInt(JOptionPane.showInputDialog(null,"Input Kode Buku"));
+                DataAkses.updateBuku(kode);
+                showToTable(DataAkses.showBuku());
+                JOptionPane.showMessageDialog(null, "Table Refreshed!");
+            }
+        });
+        
         btnDelete = new JButton("Delete");
         btnDelete.setBounds(320, 520, 150, 40);
         add(btnDelete);
@@ -57,7 +67,7 @@ public class BookCollection extends JFrame{
                 int kd = Integer.parseInt(JOptionPane.showInputDialog(null,"Input Kode Buku"));
                 DataAkses.deleteBuku(kd);
                 showToTable(DataAkses.showBuku());
-                JOptionPane.showMessageDialog(null, "Tabel Refreshed!");
+                JOptionPane.showMessageDialog(null, "Table Refreshed!");
             }
         });
         
@@ -76,7 +86,7 @@ public class BookCollection extends JFrame{
     
     private void showToTable(List<BukuFiksi> listBuku){
         Object[][] arrObj = new Object[listBuku.size()][8];
-        String [] colNames = {"Kode Buku", "Judul Buku", "Pengarang", "Penerbit", "Tahun", "Jenis", "Spesifikasi", "Available"};
+        String [] colNames = {"Kode Buku", "Judul Buku", "Pengarang", "Penerbit", "Tahun", "Jenis", "Spesifikasi", "Status"};
         
         int i = 0;
         for(BukuFiksi bF : listBuku){
@@ -91,7 +101,6 @@ public class BookCollection extends JFrame{
             i++;
         }
         
-//        DefaultTableModel dtm = new DefaultTableModel(arrObj, colNames);
         tblListBuku = new JTable(arrObj, colNames);
         tblListBuku.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(tblListBuku);
