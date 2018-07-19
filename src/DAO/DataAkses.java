@@ -17,6 +17,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -168,6 +170,68 @@ public class DataAkses {
         return listBukuFiksi;
     }
     
+    public static List<BukuFiksi> showBuku(String x,String y){
+        List <BukuFiksi> listBukuFiksi = new ArrayList<>();
+        
+        String query = "SELECT * FROM buku where "+ x +" = ?";
+        
+        try{
+            Connection con4 = ConnectionManager.getConnection();
+            PreparedStatement st4 = con4.prepareStatement(query);
+            st4.setString(1,y);
+            ResultSet rs4 = st4.executeQuery();
+            while(rs4.next()){
+                BukuFiksi b = new BukuFiksi();
+                b.setKodeBuku(rs4.getString("kode_buku"));
+                b.setJudulBuku(rs4.getString("judul_buku"));
+                b.setNamaPengarang(rs4.getString("nama_pengarang"));
+                b.setNamaPenerbit(rs4.getString("nama_penerbit"));
+                b.setTahunTerbit(rs4.getInt("tahun_terbit"));
+                b.setJenisBuku(rs4.getString("jenis_buku"));
+                b.setJenisFiksi(rs4.getString("spesifikasi_buku"));
+                b.setAvailable("available");
+                System.out.println(rs4.getString("kode_buku"));
+                System.out.println("x");
+                listBukuFiksi.add(b);
+            }
+            
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        return listBukuFiksi;
+    }
+    
+    public static void updateAvaiblity(String x,String kodeBuku){
+        Connection con4 = ConnectionManager.getConnection();
+        String query = "UPDATE buku SET avaible = ? WHERE kode_buku = ?";
+        try {
+            PreparedStatement st = con4.prepareStatement(query);
+            st.setString(1,x);
+            st.setInt(2,Integer.parseInt(kodeBuku));
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
+    
+    public static void checkAvaiblity(String kodeBuku){
+        Connection con4 = ConnectionManager.getConnection();
+        String query = "SELECT * FROM buku WHERE kode_buku = ?";
+        
+        try {
+            PreparedStatement st = con4.prepareStatement(query);
+            st.setInt(1,Integer.parseInt(kodeBuku));
+            ResultSet r = st.executeQuery();
+            while(r.next()){
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    
     public static void deleteBuku(int kode){
         
         String query = "DELETE FROM buku WHERE kode_buku = ?";
@@ -218,6 +282,19 @@ public class DataAkses {
             else{
                 JOptionPane.showMessageDialog(null, "Book not found!");
             }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+        
+    public static void deleteTranksaksi(int kode){
+        
+        String query = "DELETE FROM tranksaksi WHERE kode_buku = ?";
+        try{
+            Connection con5 = ConnectionManager.getConnection();
+            PreparedStatement st5 = con5.prepareStatement(query);
+            st5.setInt(1, kode);
+            st5.execute();
         } catch (SQLException e){
             e.printStackTrace();
         }
