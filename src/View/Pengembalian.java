@@ -54,8 +54,8 @@ class Pengembalian extends JFrame {
                     JOptionPane.showMessageDialog(null,"Kode Buku Tidak Ada");
                 }
                 else{
-                KonfirmasiPengembalian confirm = new KonfirmasiPengembalian(buku);
-                confirm.setVisible(true);
+                    KonfirmasiPengembalian confirm = new KonfirmasiPengembalian(buku);
+                    confirm.setVisible(true);
                 }
             }
         });
@@ -70,8 +70,5 @@ class Pengembalian extends JFrame {
         panel2.add(button2pnl1);
         add(panel1);
         add(panel2,BorderLayout.SOUTH);
-    }
-    public static void main(String[] args) {
-        new Pengembalian().setVisible(true);
     }
 }

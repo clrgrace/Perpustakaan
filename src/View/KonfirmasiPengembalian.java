@@ -83,6 +83,7 @@ class KonfirmasiPengembalian extends JFrame {
            @Override
            public void actionPerformed(ActionEvent e){
                DAO.DataAkses.deleteTranksaksi(Integer.parseInt(label6pnl1.getText()));
+               DAO.DataAkses.updateAvaiblity("Y",label6pnl1.getText());
                dispose();
            }
         });

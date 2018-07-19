@@ -45,7 +45,7 @@ class Search extends JFrame{
     }
     
     void bookTable(List <Model.BukuFiksi> bookList){
-        String book [] = {"Kode Buku","Judul Buku","Penulis","Penerbit","Tahun Terbit"};
+        String book [] = {"Kode Buku","Judul Buku","Penulis","Penerbit","Avaibility"};
         String buku[][] = new String[bookList.size()][5];
         
         int i = 0;
@@ -135,6 +135,13 @@ class Search extends JFrame{
         
         panel4 = new JPanel();
         button1Pnl4 = new JButton("Pinjam");
+        button1Pnl4.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Pinjam lend = new Pinjam();
+                lend.setVisible(true);
+            }
+        });
         button2Pnl4 = new JButton("Find");
         button2Pnl4.addActionListener(new ActionListener(){
             @Override

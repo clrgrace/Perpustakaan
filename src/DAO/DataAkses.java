@@ -17,6 +17,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -198,6 +200,35 @@ public class DataAkses {
         }
         
         return listBukuFiksi;
+    }
+    
+    public static void updateAvaiblity(String x,String kodeBuku){
+        Connection con4 = ConnectionManager.getConnection();
+        String query = "UPDATE buku SET avaible = ? WHERE kode_buku = ?";
+        try {
+            PreparedStatement st = con4.prepareStatement(query);
+            st.setString(1,x);
+            st.setInt(2,Integer.parseInt(kodeBuku));
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
+    
+    public static void checkAvaiblity(String kodeBuku){
+        Connection con4 = ConnectionManager.getConnection();
+        String query = "SELECT * FROM buku WHERE kode_buku = ?";
+        
+        try {
+            PreparedStatement st = con4.prepareStatement(query);
+            st.setInt(1,Integer.parseInt(kodeBuku));
+            ResultSet r = st.executeQuery();
+            while(r.next()){
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     
