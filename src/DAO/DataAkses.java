@@ -295,14 +295,14 @@ public class DataAkses {
         return x;
     }
         
-    public static void expire_lend(String kodeBuku,String x,String y){
+    public static void expire_lend(String kodeBuku,int x,String y){
         try {
             Connection con4 = ConnectionManager.getConnection();
             String query = "UPDATE transaksi set tgl_pengembalian = ?, lama_pinjam = ?  where kode_buku = ?";
             
             PreparedStatement st = con4.prepareStatement(query);
-            st.setString(1,x);
-            st.setString(2,y);
+            st.setInt(2,x);
+            st.setString(1,y);
             st.setInt(3,Integer.parseInt(kodeBuku));
             st.execute();
         } catch (SQLException ex) {

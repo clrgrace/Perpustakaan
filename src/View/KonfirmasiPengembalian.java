@@ -82,7 +82,7 @@ class KonfirmasiPengembalian extends JFrame {
         button1Pnl3.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent e){
-               DAO.DataAkses.expire_lend(label6pnl1.getText(),"now","now");
+               DAO.DataAkses.expire_lend(label6pnl1.getText(),1,"now");
                DAO.DataAkses.updateAvaiblity("Y",label6pnl1.getText());
                dispose();
            }
