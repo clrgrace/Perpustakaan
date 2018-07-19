@@ -72,8 +72,5 @@ class Pengembalian extends JFrame {
         add(panel1);
         add(panel2,BorderLayout.SOUTH);
     }
-    
-    public static void main(String[] args) {
-        new Pengembalian().setVisible(true);
-    }
+
 }

@@ -116,6 +116,7 @@ public class MainMenuFrame extends JFrame{
         lblIcon2.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
+                dispose();
                 new MenuPendaftaran().setVisible(true);
             }
 
@@ -218,6 +219,7 @@ public class MainMenuFrame extends JFrame{
         lblIcon5.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
+                dispose();
                 String [] invoke = {"test", "run"};
                 HistoryPeminjaman.main(invoke);
             }
