@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -26,17 +27,14 @@ public class HistoryPeminjaman extends JFrame {
     private JPanel pnlBtnBack;
     private JPanel pnlTabel;
     private JButton btnBack;
-    private JButton btnSelect;
+    private JButton btnSubmit;
     private JLabel lblJudul;
     private JLabel lblIcon;
+    private JLabel lblKode;
+    protected static JTextField txtKode;
     private JTable tblListBuku;
     
-    Object [][] data = {
-        {"1", "Buku A", "3"},
-        {"2", "Buku B", "2"},
-        {"3", "Buku C", "1"}
-    };
-    String [] colNames = {"No.", "List Buku", "Qty."};
+    String [] colNames = {"Kode Buku", "Judul Buku", "Pengarang"};
     
     public HistoryPeminjaman(){
         initComponents();
@@ -68,8 +66,8 @@ public class HistoryPeminjaman extends JFrame {
         btnBack.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                String[] invoke = {"test", "run"};
-                MainMenuFrame.main(invoke);
+                dispose();
+                new MainMenuFrame().setVisible(true);
             }
         });
         pnlBtnBack.add(btnBack);
@@ -85,29 +83,38 @@ public class HistoryPeminjaman extends JFrame {
         lblJudul.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
         pnlTabel.add(lblJudul);
         
-        tblListBuku = new JTable(data, colNames);
+        //TABLES
+        tblListBuku = new JTable(DAO.DataAkses.genDataTableList(), colNames);
         tblListBuku.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(tblListBuku);
         scrollPane.setBounds(15, 70, 755, 70);
         pnlTabel.add(scrollPane);
+        
+        lblKode = new JLabel("Kode Buku");
+        lblKode.setBounds(15, 165, 100, 30);
+        pnlTabel.add(lblKode);
+        
+        txtKode = new JTextField(20);
+        txtKode.setBounds(120, 165, 150, 30);
+        pnlTabel.add(txtKode);
         
         lblIcon = new JLabel();
         lblIcon.setBounds(15, 165, 300, 300);
         lblIcon.setIcon(new ImageIcon(resizeImage("img/library4.png")));
         pnlTabel.add(lblIcon);
         
-        btnSelect = new JButton("Select");
-        btnSelect.setBounds(650, 350, 100, 30);
-        btnSelect.setMnemonic('S');
-        btnSelect.setToolTipText("Click OK to return to the list of books.");
-        btnSelect.addActionListener(new ActionListener(){
+        btnSubmit = new JButton("Submit");
+        btnSubmit.setBounds(650, 350, 100, 30);
+        btnSubmit.setMnemonic('S');
+        btnSubmit.setToolTipText("Click to submit.");
+        btnSubmit.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
                 String[] invoke = {"test", "run"};
                 View.DetailHistory.main(invoke);
             }
         });
-        pnlTabel.add(btnSelect);
+        pnlTabel.add(btnSubmit);
     }
     
     public static void main(String[] args) {

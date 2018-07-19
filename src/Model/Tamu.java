@@ -13,10 +13,9 @@ public class Tamu extends Person{
     
     public Tamu(){ // Constructors
         status = "Tamu";
-        super.tglGabung = Calendar.DATE;
     }
     
-     public Tamu(String id, String name, String jk, String born, String address, String phone, String email){
+     public Tamu(String id, String name, String jk, String born, String address, String phone, String email, String join){
         this();
         this.idKTP = id;
         super.nama = name;
@@ -25,6 +24,7 @@ public class Tamu extends Person{
         super.alamat = address;
         super.noTelepon = phone;
         super.email = email;
+        super.tglGabung = join;
     }
     
     public String getIdKTP() {

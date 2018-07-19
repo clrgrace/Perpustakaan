@@ -184,7 +184,7 @@ public class MainMenuFrame extends JFrame{
         lblIcon4.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
-                new Pinjam().setVisible(true);
+                new Pengembalian().setVisible(true);
             }
 
             @Override

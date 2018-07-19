@@ -13,10 +13,9 @@ public class Dosen extends Person{
     
     public Dosen(){ // Constructors
         status = "Dosen";
-        super.tglGabung = Calendar.DATE;
     }
     
-    public Dosen(String id, String name, String jk, String born, String address, String phone, String email){
+    public Dosen(String id, String name, String jk, String born, String address, String phone, String email, String join){
         this();
         this.idDosen = id;
         super.nama = name;
@@ -25,6 +24,7 @@ public class Dosen extends Person{
         super.alamat = address;
         super.noTelepon = phone;
         super.email = email;
+        super.tglGabung = join;
     }
     
     public String getIdDosen() {

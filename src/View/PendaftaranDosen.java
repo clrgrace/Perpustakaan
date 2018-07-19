@@ -31,11 +31,11 @@ public class PendaftaranDosen extends JFrame {
         //frame
         this.setSize(720, 640);
         this.setBounds(100, 200, 200, 100);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setTitle("Pendaftaran Anggota Perpustakaan : DOSEN");
         
         //panel
-        setSize(800, 500);
+        setSize(800, 575);
         setLocationRelativeTo(null);
         getContentPane().setBackground(Color.orange);
         getContentPane().setLayout(null);
@@ -149,16 +149,31 @@ public class PendaftaranDosen extends JFrame {
         txtEmail.setBounds(100, 45, 300, 35);
         pnlEmail.add(txtEmail);
         
+        //Tanggal gabung
+        pnlTgJoin = new JPanel();
+        pnlTgJoin.setBounds(5, 360, 500, 100);
+        pnlTgJoin.setLayout(null);
+        pnlTgJoin.setBackground(Color.orange);
+        add(pnlTgJoin);
+        
+        lblTgJoin = new JLabel("<html>Tanggal Gabung<br/>(dd-mm-yyyy)<html>");
+        lblTgJoin.setBounds(10, 45, 100, 35);
+        pnlTgJoin.add(lblTgJoin);
+        
+        txtTgJoin = new JTextField(20);
+        txtTgJoin.setBounds(100, 45, 300, 35);
+        pnlTgJoin.add(txtTgJoin);
+        
         //Icon
         lblLibrary = new JLabel();
-        lblLibrary.setBounds(515, -35, 500, 500);
+        lblLibrary.setBounds(515, -25, 500, 500);
         lblLibrary.setIcon(new ImageIcon(resizeImage("img/library.png")));
         add(lblLibrary);
         
         //BUTTONS
         //Back
         pnlBtnBack = new JPanel();
-        pnlBtnBack.setBounds(5, 370, 500, 100);
+        pnlBtnBack.setBounds(5, 430, 500, 100);
         pnlBtnBack.setLayout(null);
         pnlBtnBack.setBackground(Color.orange);
         add(pnlBtnBack);
@@ -178,7 +193,7 @@ public class PendaftaranDosen extends JFrame {
         
         //Submit
         pnlBtnSub = new JPanel();
-        pnlBtnSub.setBounds(105, 370, 500, 100);
+        pnlBtnSub.setBounds(105, 430, 500, 100);
         pnlBtnSub.setLayout(null);
         pnlBtnSub.setBackground(Color.orange);
         add(pnlBtnSub);
@@ -197,8 +212,9 @@ public class PendaftaranDosen extends JFrame {
                 String alamat = txtAlamat.getText() + "";
                 String noTelp = txtNoTelp.getText() + "";
                 String email = txtEmail.getText() + "";
+                String tglGabung = txtTgJoin.getText() + "";
                 
-                Model.Dosen lecturer = new Model.Dosen(id, nama, jk, tglLahir, alamat, noTelp, email);
+                Model.Dosen lecturer = new Model.Dosen(id, nama, jk, tglLahir, alamat, noTelp, email, tglGabung);
                 DAO.DataAkses.addDosen(lecturer);
                 
                 JOptionPane.showMessageDialog(null, "Data has been successfully submitted!");
@@ -218,6 +234,7 @@ public class PendaftaranDosen extends JFrame {
     private JPanel pnlAlamat;
     private JPanel pnlNoTelp;
     private JPanel pnlEmail;
+    private JPanel pnlTgJoin;
     private JPanel pnlBtnBack;
     private JPanel pnlBtnSub;
     private JButton btnBack;
@@ -230,6 +247,7 @@ public class PendaftaranDosen extends JFrame {
     private JLabel lblAlamat;
     private JLabel lblNoTelp;
     private JLabel lblEmail;
+    private JLabel lblTgJoin;
     private JLabel lblLibrary;
     private JTextField txtId;
     private JTextField txtNama;
@@ -238,6 +256,7 @@ public class PendaftaranDosen extends JFrame {
     private JTextField txtAlamat;
     private JTextField txtNoTelp;
     private JTextField txtEmail;
+    private JTextField txtTgJoin;
     
     private Image resizeImage(String url){
         Image dimg = null;
