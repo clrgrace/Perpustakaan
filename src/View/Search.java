@@ -44,6 +44,21 @@ class Search extends JFrame{
         initComponent();
     }
     
+    String[][] bookTable(List <Model.BukuFiksi> bookList){
+    String book[][] = new String[bookList.size()][5];
+    int i = 0;
+    for(Model.BukuFiksi buku : bookList){
+        book[i][0]= buku.getKodeBuku();
+        book[i][1]= buku.getJudulBuku();
+        book[i][2]= buku.getNamaPengarang();
+        book[i][3]= buku.getNamaPenerbit();
+        book[i][4]= String.valueOf(buku.getTahunTerbit());
+        i++;
+    }
+        return book;
+    
+}
+    
     public void initComponent(){
         setSize(500,500);
         setLocationRelativeTo(null);
@@ -106,17 +121,8 @@ class Search extends JFrame{
         add(panel2,BorderLayout.WEST);
         
         String book [] = {"Kode Buku","Judul Buku","Penulis","Penerbit","Tahun Terbit"};
-        String bookTable[][] = new String[bookList.size()][5];
-        int i = 0;
-        for(Model.BukuFiksi buku : bookList){
-            bookTable[i][0]= buku.getKodeBuku();
-            bookTable[i][1]= buku.getJudulBuku();
-            bookTable[i][2]= buku.getNamaPengarang();
-            bookTable[i][3]= buku.getNamaPenerbit();
-            bookTable[i][4]= String.valueOf(buku.getTahunTerbit());
-            i++;
-        }
-        DefaultTableModel dtm = new DefaultTableModel(bookTable,book);
+        
+        DefaultTableModel dtm = new DefaultTableModel(bookTable(bookList),book);
         table1Pnl3 = new JTable();
         table1Pnl3.setModel(dtm);
         panel3 = new JScrollPane(table1Pnl3);
@@ -130,9 +136,6 @@ class Search extends JFrame{
         panel4.add(button2Pnl4,BorderLayout.EAST);
         add(panel4,BorderLayout.SOUTH);
         
-    };
-    
-    public static void main(String[] args) {
-        new Search().setVisible(true);
     }
+    
 }
