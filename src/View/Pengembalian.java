@@ -28,7 +28,7 @@ class Pengembalian extends JFrame {
     }
     
     void initComponent(){
-        this.setSize(300,100);
+        this.setSize(300,150);
         this.setLocationRelativeTo(null);
         this.setTitle("Search Buku : Pengembalian");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -71,5 +71,9 @@ class Pengembalian extends JFrame {
         panel2.add(button2pnl1);
         add(panel1);
         add(panel2,BorderLayout.SOUTH);
+    }
+    
+    public static void main(String[] args) {
+        new Pengembalian().setVisible(true);
     }
 }

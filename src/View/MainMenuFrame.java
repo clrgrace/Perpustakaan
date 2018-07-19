@@ -116,7 +116,7 @@ public class MainMenuFrame extends JFrame{
         lblIcon2.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
-                JOptionPane.showMessageDialog(null, "Please Input Person's Name");
+                new MenuPendaftaran().setVisible(true);
             }
 
             @Override
