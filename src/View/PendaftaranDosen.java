@@ -31,7 +31,7 @@ public class PendaftaranDosen extends JFrame {
         //frame
         this.setSize(720, 640);
         this.setBounds(100, 200, 200, 100);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setTitle("Pendaftaran Anggota Perpustakaan : DOSEN");
         
         //panel

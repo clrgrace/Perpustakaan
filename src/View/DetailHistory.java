@@ -42,7 +42,7 @@ public class DetailHistory extends JFrame {
         //frame
         this.setSize(640, 480);
         this.setBounds(100, 200, 200, 100);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setTitle("History Peminjaman");
         
         //panel

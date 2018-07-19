@@ -46,7 +46,7 @@ public class MenuPendaftaran extends JFrame {
         //frame
         this.setSize(640, 480);
         this.setBounds(100, 200, 200, 100);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setTitle("Menu Pendaftaran");
         
         //panel
@@ -68,8 +68,8 @@ public class MenuPendaftaran extends JFrame {
         btnBack.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                String[] invoke = {"test", "run"};
-                MainMenuFrame.main(invoke);
+                dispose();
+                new MainMenuFrame().setVisible(true);
             }
         });
         pnlBtnBack.add(btnBack);
