@@ -218,7 +218,8 @@ public class MainMenuFrame extends JFrame{
         lblIcon5.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
-                JOptionPane.showMessageDialog(null, "This is the History Page");
+                String [] invoke = {"test", "run"};
+                HistoryPeminjaman.main(invoke);
             }
 
             @Override
