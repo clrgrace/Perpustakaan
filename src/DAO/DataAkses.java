@@ -5,14 +5,18 @@
  */
 package DAO;
 
+import Model.Buku;
+import Model.BukuFiksi;
 import View.LoginFrame;
 import View.MainMenuFrame;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -133,6 +137,50 @@ public class DataAkses {
         }
         
         return add;
+    }
+    
+    public static List<BukuFiksi> showBuku(){
+        List <BukuFiksi> listBukuFiksi = new ArrayList<>();
+        
+        String query = "SELECT * FROM buku";
+        try{
+            Connection con4 = ConnectionManager.getConnection();
+            PreparedStatement st4 = con4.prepareStatement(query);
+            ResultSet rs4 = st4.executeQuery();
+            while(rs4.next()){
+                BukuFiksi b = new BukuFiksi();
+                b.setKodeBuku(rs4.getString("kode_buku"));
+                b.setJudulBuku(rs4.getString("judul_buku"));
+                b.setNamaPengarang(rs4.getString("nama_pengarang"));
+                b.setNamaPenerbit(rs4.getString("nama_penerbit"));
+                b.setTahunTerbit(rs4.getInt("tahun_terbit"));
+                b.setJenisBuku(rs4.getString("jenis_buku"));
+                b.setJenisFiksi(rs4.getString("spesifikasi_buku"));
+                b.setAvailable("available");
+                
+                listBukuFiksi.add(b);
+            }
+            
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        return listBukuFiksi;
+    }
+    
+    public static void deleteBuku(int kode){
+        
+        String query = "DELETE FROM buku WHERE kode_buku = ?";
+        try{
+            Connection con5 = ConnectionManager.getConnection();
+            PreparedStatement st5 = con5.prepareStatement(query);
+            st5.setInt(1, kode);
+            
+            st5.execute();
+            JOptionPane.showMessageDialog(null, "Delete Sukses!");
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
     }
     
     //GRACE

@@ -46,7 +46,7 @@ public class HistoryPeminjaman extends JFrame {
         //frame
         this.setSize(640, 480);
         this.setBounds(100, 200, 200, 100);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setTitle("History Peminjaman");
         
         //panel
@@ -99,7 +99,7 @@ public class HistoryPeminjaman extends JFrame {
         btnSelect = new JButton("Select");
         btnSelect.setBounds(650, 350, 100, 30);
         btnSelect.setMnemonic('S');
-        btnSelect.setToolTipText("Click OK to return to the lis of books.");
+        btnSelect.setToolTipText("Click OK to return to the list of books.");
         btnSelect.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {

@@ -10,6 +10,24 @@ public abstract class Buku {
     protected String namaPengarang;
     protected String namaPenerbit;
     protected int tahunTerbit;
+    protected String jenisBuku;
+    protected String available;
+
+    public String getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(String available) {
+        this.available = available;
+    }
+
+    public String getJenisBuku() {
+        return jenisBuku;
+    }
+
+    public void setJenisBuku(String jenisBuku) {
+        this.jenisBuku = jenisBuku;
+    }
 
     public String getKodeBuku() {
         return kodeBuku;

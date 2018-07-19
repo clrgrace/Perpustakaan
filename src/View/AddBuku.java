@@ -40,7 +40,7 @@ public class AddBuku extends JFrame {
         pnlKode.setBackground(Color.orange);
         add(pnlKode);
         
-        lblJudul = new JLabel("ADD / EDIT DATA BUKU PERPUSTAKAAN");
+        lblJudul = new JLabel("ADD BUKU PERPUSTAKAAN");
         lblJudul.setBounds(275, 0, 400, 30);
         pnlKode.add(lblJudul);
         
