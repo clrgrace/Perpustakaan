@@ -32,12 +32,7 @@ public class DetailHistory extends JFrame {
     private JLabel lblIcon;
     private JTable tblBuku;
     
-    Object [][] data = {
-        {"1", "1217001", "X", "2 Maret 2018"},
-        {"2", "1315025", "Y", "3 Mei 2018"},
-        {"3", "1114007", "Z", "16 Mei 2018"}
-    };
-    String [] colNames = {"No.", "ID Peminjam", "Nama Peminjam", "Tanggal Pinjam"};
+    String [] colNames = {"ID Peminjam", "Status Peminjam", "Tanggal Pinjam"};
     
     public DetailHistory(){
         initComponents();
@@ -81,12 +76,12 @@ public class DetailHistory extends JFrame {
         pnlTabel.setBackground(Color.orange);
         add(pnlTabel);
         
-        lblBuku = new JLabel("Buku A");
-        lblBuku.setBounds(320, 0, 200, 70);
+        lblBuku = new JLabel("History Peminjaman Buku");
+        lblBuku.setBounds(300, 0, 200, 70);
         lblBuku.setFont(new Font("Kristen ITC", Font.BOLD, 32));
         pnlTabel.add(lblBuku);
         
-        tblBuku = new JTable(data, colNames);
+        tblBuku = new JTable(DAO.DataAkses.genDataTableHistory(HistoryPeminjaman.txtKode.getText()), colNames);
         tblBuku.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(tblBuku);
         scrollPane.setBounds(15, 70, 755, 70);
@@ -104,8 +99,8 @@ public class DetailHistory extends JFrame {
         btnOk.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                String[] invoke = {"test", "run"};
-                MainMenuFrame.main(invoke);
+                dispose();
+                new MainMenuFrame().setVisible(true);
             }
         });
         pnlTabel.add(btnOk);
