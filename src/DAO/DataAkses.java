@@ -345,7 +345,7 @@ public class DataAkses {
             st.setString(5, dosen.getAlamat());
             st.setString(6, dosen.getNoTelepon());
             st.setString(7, dosen.getEmail());
-            st.setInt(8, dosen.getTglGabung());
+            st.setString(8, dosen.getTglGabung());
             st.setString(9, dosen.getStatus());
             
             st.execute();
@@ -365,7 +365,7 @@ public class DataAkses {
             st.setString(5, mhs.getAlamat());
             st.setString(6, mhs.getNoTelepon());
             st.setString(7, mhs.getEmail());
-            st.setInt(8, mhs.getTglGabung());
+            st.setString(8, mhs.getTglGabung());
             st.setString(9, mhs.getStatus());
             
             st.execute();
@@ -385,7 +385,7 @@ public class DataAkses {
             st.setString(5, tamu.getAlamat());
             st.setString(6, tamu.getNoTelepon());
             st.setString(7, tamu.getEmail());
-            st.setInt(8, tamu.getTglGabung());
+            st.setString(8, tamu.getTglGabung());
             st.setString(9, tamu.getStatus());
             
             st.execute();

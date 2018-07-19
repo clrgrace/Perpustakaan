@@ -13,10 +13,9 @@ public class Mahasiswa extends Person{
     
     public Mahasiswa(){ // Constructors
         status = "Mahasiswa";
-        super.tglGabung = Calendar.DATE;
     }
     
-     public Mahasiswa(String id, String name, String jk, String born, String address, String phone, String email){
+     public Mahasiswa(String id, String name, String jk, String born, String address, String phone, String email, String join){
         this();
         this.idMahasiswa = id;
         super.nama = name;
@@ -25,6 +24,7 @@ public class Mahasiswa extends Person{
         super.alamat = address;
         super.noTelepon = phone;
         super.email = email;
+        super.tglGabung = join;
     }
     
     public String getIdMahasiswa() {

@@ -14,7 +14,7 @@ public abstract class Person {
     protected String alamat;
     protected String noTelepon;
     protected String email;
-    protected int tglGabung; // jadi anggota perpustakaan / petugas perpustakaan
+    protected String tglGabung; // jadi anggota perpustakaan / petugas perpustakaan
     
     public String getNama() {
         return nama;
@@ -64,11 +64,11 @@ public abstract class Person {
         this.email = email;
     }
     
-    public int getTglGabung() {
+    public String getTglGabung() {
         return tglGabung;
     }
 
-    public void setTglGabung(int tglGabung) {
+    public void setTglGabung(String tglGabung) {
         this.tglGabung = tglGabung;
     }
     

@@ -31,11 +31,14 @@ public class ConnectionManager {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             
+            System.out.println("Koneksi sukses!");
             return DriverManager.getConnection(server, username, password);
         } catch(SQLException e){
             e.printStackTrace(System.err);
+            System.out.println("Koneksi gagal : " + e.toString());
         } catch(ClassNotFoundException ex){
             ex.printStackTrace(System.err);
+            System.out.println("JDBC.OOBC driver tidak ditemukan!");
         }
         
         return null;
@@ -47,6 +50,10 @@ public class ConnectionManager {
         } catch(Exception e){
             e.printStackTrace(System.err);
         }
+    }
+    
+    public static void main(String[] args) {
+        logOn();
     }
     
 }
