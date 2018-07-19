@@ -41,7 +41,7 @@ class Pinjam extends JFrame {
         setLocationRelativeTo(null);
         
         panel1 = new JPanel();
-        panel1.setLayout(new GridLayout(3,1));
+        panel1.setLayout(new GridLayout(4,1));
         
         label1pnl1 = new JLabel("Kode Buku");
         txt1pnl1 = new JTextField(1);
@@ -60,7 +60,6 @@ class Pinjam extends JFrame {
         
         label4pnl1 = new JLabel("Tanggal Pinjam");
         txt4pnl1= new JTextField(1);
-        txt4pnl1.setEditable(false);
         panel1.add(label4pnl1);
         panel1.add(txt4pnl1);
         
