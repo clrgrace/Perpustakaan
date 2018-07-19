@@ -189,7 +189,8 @@ public class DataAkses {
                 b.setJenisBuku(rs4.getString("jenis_buku"));
                 b.setJenisFiksi(rs4.getString("spesifikasi_buku"));
                 b.setAvailable("available");
-                
+                System.out.println(rs4.getString("kode_buku"));
+                System.out.println("x");
                 listBukuFiksi.add(b);
             }
             

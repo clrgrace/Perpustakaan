@@ -34,6 +34,7 @@ class KonfirmasiPengembalian extends JFrame {
     private JButton button2Pnl3;
     
     private JPanel panel4;
+    private JPanel panel5;
     
     KonfirmasiPengembalian(Model.Buku buku){
         initComponent(buku);
@@ -60,14 +61,14 @@ class KonfirmasiPengembalian extends JFrame {
         label10pnl1 = new JLabel("Denda");
         
         panel1.add(label1pnl1);
-        panel1.add(label2pnl1);
-        panel1.add(label3pnl1);
-        panel1.add(label4pnl1);
-        panel1.add(label5pnl1);
         panel1.add(label6pnl1);
+        panel1.add(label2pnl1);
         panel1.add(label7pnl1);
+        panel1.add(label3pnl1);
         panel1.add(label8pnl1);
+        panel1.add(label4pnl1);
         panel1.add(label9pnl1);
+        panel1.add(label5pnl1);
         panel1.add(label10pnl1);
         
         add(panel1,BorderLayout.WEST);
@@ -82,9 +83,11 @@ class KonfirmasiPengembalian extends JFrame {
         add(panel3,BorderLayout.SOUTH);
         
         panel4 = new JPanel();
+        panel5 = new JPanel();
         panel4.setBackground(Color.ORANGE);
+        panel5.setBackground(Color.ORANGE);
         add(panel4,BorderLayout.CENTER);
-        add(panel4,BorderLayout.EAST);
+        add(panel5,BorderLayout.EAST);
     }
     
 }
