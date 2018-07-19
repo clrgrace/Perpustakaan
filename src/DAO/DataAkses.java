@@ -5,14 +5,20 @@
  */
 package DAO;
 
+import Model.Buku;
+import Model.BukuFiksi;
 import View.LoginFrame;
 import View.MainMenuFrame;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -134,6 +140,176 @@ public class DataAkses {
         
         return add;
     }
+    
+    public static List<BukuFiksi> showBuku(){
+        List <BukuFiksi> listBukuFiksi = new ArrayList<>();
+        
+        String query = "SELECT * FROM buku";
+        try{
+            Connection con4 = ConnectionManager.getConnection();
+            PreparedStatement st4 = con4.prepareStatement(query);
+            ResultSet rs4 = st4.executeQuery();
+            while(rs4.next()){
+                BukuFiksi b = new BukuFiksi();
+                b.setKodeBuku(rs4.getString("kode_buku"));
+                b.setJudulBuku(rs4.getString("judul_buku"));
+                b.setNamaPengarang(rs4.getString("nama_pengarang"));
+                b.setNamaPenerbit(rs4.getString("nama_penerbit"));
+                b.setTahunTerbit(rs4.getInt("tahun_terbit"));
+                b.setJenisBuku(rs4.getString("jenis_buku"));
+                b.setJenisFiksi(rs4.getString("spesifikasi_buku"));
+                b.setAvailable(rs4.getString("available"));
+                
+                listBukuFiksi.add(b);
+            }
+            
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        return listBukuFiksi;
+    }
+    
+    public static void deleteBuku(int kode){
+        
+        String query = "DELETE FROM buku WHERE kode_buku = ?";
+        try{
+            Connection con5 = ConnectionManager.getConnection();
+            PreparedStatement st5 = con5.prepareStatement(query);
+            st5.setInt(1, kode);
+            
+            st5.execute();
+            JOptionPane.showMessageDialog(null, "Delete Sukses!");
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static void updateBuku(int kode){
+        
+        String query = "SELECT * FROM buku WHERE kode_buku = ?";
+        try{
+            Connection con6 = ConnectionManager.getConnection();
+            PreparedStatement st6 = con6.prepareStatement(query);
+            st6.setInt(1, kode);
+            
+            ResultSet rs6 = st6.executeQuery();
+            if(rs6.next()){
+                String jdl = JOptionPane.showInputDialog(null,"Input Judul Buku : ");
+                String pgr = JOptionPane.showInputDialog(null, "Input Pengarang : ");
+                String pbt = JOptionPane.showInputDialog(null, "Input Penerbit : ");
+                int tT = Integer.parseInt(JOptionPane.showInputDialog(null, "Input Tahun Terbit : "));
+                String jenis = JOptionPane.showInputDialog(null, "Fiksi / NonFiksi (Text must Appropriate)");
+                String sps = JOptionPane.showInputDialog(null, "Spesifikasi Buku");
+                String stat = JOptionPane.showInputDialog(null, "Available (Y / N)");
+                
+                String query2 = "UPDATE buku SET judul_buku=?, nama_pengarang=?, nama_penerbit=?, tahun_terbit=?, jenis_buku=?, spesifikasi_buku=?, available=? WHERE kode_buku=?";
+                    PreparedStatement st7 = con6.prepareStatement(query2);
+                    st7.setString(1, jdl);
+                    st7.setString(2, pgr);
+                    st7.setString(3, pbt);
+                    st7.setInt(4, tT);
+                    st7.setString(5, jenis);
+                    st7.setString(6, sps);
+                    st7.setString(7, stat);
+                    st7.setInt(8, kode);
+                    
+                    st7.execute();
+                    JOptionPane.showMessageDialog(null, "Update Buku Sukses!");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Book not found!");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    // SAMUEL
+    public static List<BukuFiksi> showBuku(String x,String y){
+        List <BukuFiksi> listBukuFiksi = new ArrayList<>();
+        
+        String query = "SELECT * FROM buku where "+ x +" = ?";
+        
+        try{
+            Connection con4 = ConnectionManager.getConnection();
+            PreparedStatement st4 = con4.prepareStatement(query);
+            st4.setString(1,y);
+            ResultSet rs4 = st4.executeQuery();
+            while(rs4.next()){
+                BukuFiksi b = new BukuFiksi();
+                b.setKodeBuku(rs4.getString("kode_buku"));
+                b.setJudulBuku(rs4.getString("judul_buku"));
+                b.setNamaPengarang(rs4.getString("nama_pengarang"));
+                b.setNamaPenerbit(rs4.getString("nama_penerbit"));
+                b.setTahunTerbit(rs4.getInt("tahun_terbit"));
+                b.setJenisBuku(rs4.getString("jenis_buku"));
+                b.setJenisFiksi(rs4.getString("spesifikasi_buku"));
+                b.setAvailable("available");
+                System.out.println(rs4.getString("kode_buku"));
+                System.out.println("x");
+                listBukuFiksi.add(b);
+            }
+            
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        return listBukuFiksi;
+    }
+    
+    public static void updateAvaiblity(String x,String kodeBuku){
+        Connection con4 = ConnectionManager.getConnection();
+        String query = "UPDATE buku SET avaible = ? WHERE kode_buku = ?";
+        try {
+            PreparedStatement st = con4.prepareStatement(query);
+            st.setString(1,x);
+            st.setInt(2,Integer.parseInt(kodeBuku));
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
+    
+    public static void checkAvaiblity(String kodeBuku){
+        Connection con4 = ConnectionManager.getConnection();
+        String query = "SELECT * FROM buku WHERE kode_buku = ?";
+        
+        try {
+            PreparedStatement st = con4.prepareStatement(query);
+            st.setInt(1,Integer.parseInt(kodeBuku));
+            ResultSet r = st.executeQuery();
+            while(r.next()){
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+    public static void deleteTranksaksi(int kode){
+        
+        String query = "DELETE FROM tranksaksi WHERE kode_buku = ?";
+        try{
+            Connection con5 = ConnectionManager.getConnection();
+            PreparedStatement st5 = con5.prepareStatement(query);
+            st5.setInt(1, kode);
+            st5.execute();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
+    
+    
     
     //GRACE
     public static void addDosen(Model.Dosen dosen){

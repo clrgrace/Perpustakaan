@@ -1,12 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package UI;
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
+package View;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
@@ -34,21 +36,16 @@ class Pinjam extends JFrame {
     }
     
     void initComponent(){
-        setSize(400,200);
+        setSize(250,150);
         setLocationRelativeTo(null);
         
         panel1 = new JPanel();
-        panel1.setLayout(new GridLayout(4,1));
+        panel1.setLayout(new GridLayout(3,1));
         
         label1pnl1 = new JLabel("Kode Buku");
         txt1pnl1 = new JTextField(1);
         panel1.add(label1pnl1);
         panel1.add(txt1pnl1);
-        
-        label2pnl1 = new JLabel("Judul");
-        txt2pnl1= new JTextField(1);
-        panel1.add(label2pnl1);
-        panel1.add(txt2pnl1);
         
         label3pnl1 = new JLabel("ID");
         txt3pnl1= new JTextField(1);
@@ -57,13 +54,27 @@ class Pinjam extends JFrame {
         
         label4pnl1 = new JLabel("Tanggal Pinjam");
         txt4pnl1= new JTextField(1);
+        txt4pnl1.setEditable(false);
         panel1.add(label4pnl1);
         panel1.add(txt4pnl1);
         
         panel2 = new JPanel();
         
         button1pnl1 = new JButton("Confirm");
+        button1pnl1.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DAO.DataAkses.updateAvaiblity("N",txt1pnl1.getText());
+                dispose();
+            }
+        });
         button2pnl1 = new JButton("Cancel");
+        button2pnl1.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
         panel2.add(button1pnl1);
         panel2.add(button2pnl1);
         

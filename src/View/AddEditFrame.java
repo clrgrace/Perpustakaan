@@ -20,7 +20,7 @@ public class AddEditFrame extends JFrame{
     
     private void initComponents(){
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        this.setSize(350,200);
+        this.setSize(400,200);
         this.setLocationRelativeTo(null);
         
         this.setTitle("Add or Edit?");
@@ -29,7 +29,7 @@ public class AddEditFrame extends JFrame{
         
         pnl1 = new JPanel();
         pnl1.setLayout(null);
-        pnl1.setBounds(0,25,350,100);
+        pnl1.setBounds(0,25,400,100);
         pnl1.setBackground(Color.darkGray);
         add(pnl1);
         
@@ -45,22 +45,22 @@ public class AddEditFrame extends JFrame{
             }
         });
         
-        btnEdit = new JButton("Edit");
-        btnEdit.setBounds(200, 30, 100, 40);
+        btnEdit = new JButton("Book Collection");
+        btnEdit.setBounds(200, 30, 150, 40);
         pnl1.add(btnEdit);
         
-    //        btnEdit.addActionListener(new ActionListener(){
-    //            @Override
-    //            public void actionPerformed(ActionEvent ae) {
-    //                dispose();
-    //                new EditBuku().setVisible(true);
-    //            }
-    //        });
+            btnEdit.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    dispose();
+                    new BookCollection().setVisible(true);
+                }
+            });
     }
     
-    public static void main(String[] args) {
-        new AddEditFrame().setVisible(true);
-    }
+//    public static void main(String[] args) {
+//        new AddEditFrame().setVisible(true);
+//    }
     
     private JPanel pnl1 = new JPanel();
     private JButton btnAdd = new JButton();
