@@ -58,7 +58,7 @@ class Search extends JFrame{
             buku[i][1]= bookL.getJudulBuku();
             buku[i][2]= bookL.getNamaPengarang();
             buku[i][3]= bookL.getNamaPenerbit();
-            buku[i][4]= String.valueOf(bookL.getTahunTerbit());
+            buku[i][4]= DAO.DataAkses.checkAvaiblity(bookL.getKodeBuku());
             i++;
         }
         DefaultTableModel dtm = new DefaultTableModel(buku,book);

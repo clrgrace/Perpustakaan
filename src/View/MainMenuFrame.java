@@ -184,7 +184,7 @@ public class MainMenuFrame extends JFrame{
         lblIcon4.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
-                new Pinjam().setVisible(true);
+                new Pengembalian().setVisible(true);
             }
 
             @Override
@@ -240,9 +240,9 @@ public class MainMenuFrame extends JFrame{
         
     }
     
-//    public static void main(String[] args) {
-//        new MainMenuFrame().setVisible(true);
-//    }
+    public static void main(String[] args) {
+        new MainMenuFrame().setVisible(true);
+    }
     
     private JLabel lblUser = new JLabel();
     private JLabel lblTitle = new JLabel();

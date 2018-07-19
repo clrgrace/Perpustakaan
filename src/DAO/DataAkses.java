@@ -277,32 +277,51 @@ public class DataAkses {
             
     }
     
-    public static void checkAvaiblity(String kodeBuku){
+    public static String checkAvaiblity(String kodeBuku){
         Connection con4 = ConnectionManager.getConnection();
         String query = "SELECT * FROM buku WHERE kode_buku = ?";
-        
+        String x = null;
         try {
             PreparedStatement st = con4.prepareStatement(query);
             st.setInt(1,Integer.parseInt(kodeBuku));
             ResultSet r = st.executeQuery();
             while(r.next()){
-                
+                x = Integer.toString(r.getInt("kode_buku"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return x;
     }
         
-    public static void deleteTranksaksi(int kode){
-        
-        String query = "DELETE FROM tranksaksi WHERE kode_buku = ?";
-        try{
-            Connection con5 = ConnectionManager.getConnection();
-            PreparedStatement st5 = con5.prepareStatement(query);
-            st5.setInt(1, kode);
-            st5.execute();
-        } catch (SQLException e){
-            e.printStackTrace();
+    public static void expire_lend(String kodeBuku,String x,String y){
+        try {
+            Connection con4 = ConnectionManager.getConnection();
+            String query = "UPDATE transaksi set tgl_pengembalian = ?, lama_pinjam = ?  where kode_buku = ?";
+            
+            PreparedStatement st = con4.prepareStatement(query);
+            st.setString(1,x);
+            st.setString(2,y);
+            st.setInt(3,Integer.parseInt(kodeBuku));
+            st.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void lend(String kodeBuku,String x,String y,String z){
+        try {
+            Connection con4 = ConnectionManager.getConnection();
+            String query = "INSERT INTO transaksi (kode_buku,status,id_peminjam,tgl_peminjam) VALUES (?,?,?,?)";
+            
+            PreparedStatement st = con4.prepareStatement(query);
+            st.setString(2,x);
+            st.setString(3,y);
+            st.setString(3,z);
+            st.setInt(1,Integer.parseInt(kodeBuku));
+            st.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

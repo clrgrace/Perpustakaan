@@ -48,6 +48,11 @@ class Pinjam extends JFrame {
         panel1.add(label1pnl1);
         panel1.add(txt1pnl1);
         
+        label2pnl1 = new JLabel ("Status");
+        txt2pnl1 = new JTextField(1);
+        panel1.add(label2pnl1);
+        panel1.add(txt1pnl1);
+        
         label3pnl1 = new JLabel("ID");
         txt3pnl1= new JTextField(1);
         panel1.add(label3pnl1);
@@ -66,6 +71,7 @@ class Pinjam extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DAO.DataAkses.updateAvaiblity("N",txt1pnl1.getText());
+                DAO.DataAkses.lend(txt1pnl1.getText(),txt2pnl1.getText() , txt3pnl1.getText(), txt4pnl1.getText());
                 dispose();
             }
         });
