@@ -327,6 +327,22 @@ public class DataAkses {
             Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public static String[] lend_data(String kodeBuku){
+        Connection con4 = ConnectionManager.getConnection();
+        String query = "SELECT * from transaksi,buku where kode_buku = ? ";
+        String [] x = new String[2]; 
+        try {
+            PreparedStatement st = con4.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                x[0] = rs.getString("buku.jenis_buku");
+                x[1] = rs.getString("transaksi.tgl_peminjaman");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return x;
+    }
     
     
     

@@ -47,6 +47,8 @@ class KonfirmasiPengembalian extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(360,360);
         
+        String [] x = DAO.DataAkses.lend_data(label6pnl1.getText());
+        
         panel1 = new JPanel();
         panel1.setBackground(Color.orange);
         panel1.setLayout(new GridLayout(5,2));
@@ -58,8 +60,8 @@ class KonfirmasiPengembalian extends JFrame {
         label5pnl1 = new JLabel("Denda");
         label6pnl1 = new JLabel(buku.getKodeBuku());
         label7pnl1 = new JLabel(buku.getJudulBuku());
-        label8pnl1 = new JLabel("");
-        label9pnl1 = new JLabel("");
+        label8pnl1 = new JLabel(x[0]);
+        label9pnl1 = new JLabel(x[1]);
         label10pnl1 = new JLabel("Denda");
         
         panel1.add(label1pnl1);
