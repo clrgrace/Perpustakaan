@@ -327,23 +327,22 @@ public class DataAkses {
             Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public static String[] lend_data(String kodeBuku){
+    public static String lend_data(String kodeBuku,int y){
         Connection con4 = ConnectionManager.getConnection();
-        String query = "SELECT * FROM transaksi,buku where buku.kode_buku = ? AND transaksi.kode_buku = ? ";
+        String query = "SELECT a.*,b.* FROM buku a INNER JOIN transaksi b ON a.kode_buku = b.kode_buku AND a.kode_buku = ?";
         String [] x = new String[2]; 
         try {
             PreparedStatement st = con4.prepareStatement(query);
             st.setInt(1, Integer.parseInt(kodeBuku));
-            st.setInt(2, Integer.parseInt(kodeBuku));
             ResultSet rs = st.executeQuery();
             while(rs.next()){
-                x[0] = rs.getString("buku.jenis_buku");
-                x[1] = rs.getString("transaksi.tgl_peminjaman");
+                x[0] = rs.getString("a.jenis_buku");
+                x[1] = rs.getString("b.tgl_peminjaman");
             }
         } catch (SQLException ex) {
             Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return x;
+        return x[y];
     }
     
     
