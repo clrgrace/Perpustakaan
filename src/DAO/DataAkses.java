@@ -439,7 +439,7 @@ public class DataAkses {
     
     public static Object[][] genDataTableList(){
 //        Object [][] data = {{}};
-        Object [][] arrObj = new Object[3][3];
+        Object [][] arrObj = new Object[20][3];
         int i = 0;
         
         String query = "SELECT * FROM buku";
