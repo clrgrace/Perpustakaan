@@ -47,7 +47,9 @@ class KonfirmasiPengembalian extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(360,360);
         
-        String [] x = DAO.DataAkses.lend_data(label6pnl1.getText());
+        String [] x = new String[2];
+        x = DAO.DataAkses.lend_data(label6pnl1.getText());
+        System.out.println(x[0]);
         
         panel1 = new JPanel();
         panel1.setBackground(Color.orange);

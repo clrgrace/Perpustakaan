@@ -329,10 +329,12 @@ public class DataAkses {
     }
     public static String[] lend_data(String kodeBuku){
         Connection con4 = ConnectionManager.getConnection();
-        String query = "SELECT * from transaksi,buku where kode_buku = ? ";
+        String query = "SELECT * FROM transaksi,buku where buku.kode_buku = ? AND transaksi.kode_buku = ? ";
         String [] x = new String[2]; 
         try {
             PreparedStatement st = con4.prepareStatement(query);
+            st.setInt(1, Integer.parseInt(kodeBuku));
+            st.setInt(2, Integer.parseInt(kodeBuku));
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 x[0] = rs.getString("buku.jenis_buku");
