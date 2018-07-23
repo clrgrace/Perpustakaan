@@ -5,6 +5,7 @@
  */
 package View;
 
+import DAO.PinjamDanPengembalianDAO;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -59,8 +60,8 @@ class KonfirmasiPengembalian extends JFrame {
         label5pnl1 = new JLabel("Denda");
         label6pnl1 = new JLabel(buku.getKodeBuku());
         label7pnl1 = new JLabel(buku.getJudulBuku());
-        label8pnl1 = new JLabel(DAO.DataAkses.lend_data(label6pnl1.getText(), 0));
-        label9pnl1 = new JLabel(DAO.DataAkses.lend_data(label6pnl1.getText(), 1));
+        label8pnl1 = new JLabel(PinjamDanPengembalianDAO.lend_data(label6pnl1.getText(), 0));
+        label9pnl1 = new JLabel(PinjamDanPengembalianDAO.lend_data(label6pnl1.getText(), 1));
         label10pnl1 = new JLabel("0");
         
         panel1.add(label1pnl1);
@@ -83,8 +84,8 @@ class KonfirmasiPengembalian extends JFrame {
         button1Pnl3.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent e){
-               DAO.DataAkses.expire_lend(label6pnl1.getText(),1,"now");
-               DAO.DataAkses.updateAvaiblity("Y",label6pnl1.getText());
+               PinjamDanPengembalianDAO.expire_lend(label6pnl1.getText(),1,"now");
+               PinjamDanPengembalianDAO.updateAvaiblity("Y",label6pnl1.getText());
                dispose();
            }
         });

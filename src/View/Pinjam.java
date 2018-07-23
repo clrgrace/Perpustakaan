@@ -5,6 +5,7 @@
 */
 package View;
 
+import DAO.PinjamDanPengembalianDAO;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -69,8 +70,8 @@ class Pinjam extends JFrame {
         button1pnl1.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                DAO.DataAkses.updateAvaiblity("N",txt1pnl1.getText());
-                DAO.DataAkses.lend(txt1pnl1.getText(),txt2pnl1.getText() , txt3pnl1.getText(), txt4pnl1.getText());
+                PinjamDanPengembalianDAO.updateAvaiblity("N",txt1pnl1.getText());
+                PinjamDanPengembalianDAO.lend(txt1pnl1.getText(),txt2pnl1.getText() , txt3pnl1.getText(), txt4pnl1.getText());
                 dispose();
             }
         });

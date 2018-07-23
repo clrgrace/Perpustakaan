@@ -54,9 +54,14 @@ class Pengembalian extends JFrame {
                     JOptionPane.showMessageDialog(null,"Kode Buku Tidak Ada");
                 }
                 else{
+                    if(DAO.PinjamDanPengembalianDAO.checkAvaiblity(txt1pnl1.getText()).equals("N")){
                     KonfirmasiPengembalian confirm = new KonfirmasiPengembalian(buku);
                     confirm.setVisible(true);
                     dispose();
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"Buku Tidak Pernah Dipinjam");
+                    }
                 }
             }
         });
