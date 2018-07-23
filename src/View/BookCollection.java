@@ -1,5 +1,6 @@
 package View;
 
+import DAO.BukuDAO;
 import DAO.DataAkses;
 import Model.BukuFiksi;
 import java.awt.Color;
@@ -41,7 +42,7 @@ public class BookCollection extends JFrame{
         lblTitle.setFont(new Font("Arial",Font.BOLD,23));
         add(lblTitle);
         
-        showToTable(DataAkses.showBuku());
+        showToTable(BukuDAO.showBuku());
         
         btnUpdate = new JButton("Update");
         btnUpdate.setBounds(320,420,150,40);
@@ -51,8 +52,8 @@ public class BookCollection extends JFrame{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 int kode = Integer.parseInt(JOptionPane.showInputDialog(null,"Input Kode Buku"));
-                DataAkses.updateBuku(kode);
-                showToTable(DataAkses.showBuku());
+                BukuDAO.updateBuku(kode);
+                showToTable(BukuDAO.showBuku());
                 JOptionPane.showMessageDialog(null, "Table Refreshed!");
             }
         });
@@ -65,8 +66,8 @@ public class BookCollection extends JFrame{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 int kd = Integer.parseInt(JOptionPane.showInputDialog(null,"Input Kode Buku"));
-                DataAkses.deleteBuku(kd);
-                showToTable(DataAkses.showBuku());
+                BukuDAO.deleteBuku(kd);
+                showToTable(BukuDAO.showBuku());
                 JOptionPane.showMessageDialog(null, "Table Refreshed!");
             }
         });

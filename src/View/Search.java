@@ -5,6 +5,7 @@
 */
 package View;
 
+import DAO.BukuDAO;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.*;
@@ -125,7 +126,7 @@ class Search extends JFrame{
         button5Pnl2.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                bookList = DAO.DataAkses.showBuku();
+                bookList = BukuDAO.showBuku();
                 
             }
         });

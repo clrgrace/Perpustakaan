@@ -1,6 +1,7 @@
 package View;
 
-import DAO.DataAkses;
+import DAO.LoginDAO;
+import DAO.ForgotPasswordDAO;
 import Model.Petugas;
 import java.awt.Color;
 import java.awt.Font;
@@ -94,7 +95,7 @@ public class LoginFrame extends JFrame {
                 String id = new String(txtUsername.getText());
                 String pass = new String(txtPassword.getPassword());
                 
-                if(DataAkses.logIn(id,pass)){
+                if(LoginDAO.logIn(id,pass)){
                     dispose();
                     JOptionPane.showMessageDialog(null, "Welcome, " + id);
                     MainMenuFrame mmFrame = new MainMenuFrame();
@@ -109,7 +110,7 @@ public class LoginFrame extends JFrame {
                 String id = JOptionPane.showInputDialog("Enter Id Petugas..");
                 String email = JOptionPane.showInputDialog("Enter Email Petugas..");
                 
-                DataAkses.forgotPassword(id, email);
+                ForgotPasswordDAO.forgotPassword(id, email);
             }
 
             @Override

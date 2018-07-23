@@ -52,16 +52,16 @@ class KonfirmasiPengembalian extends JFrame {
         panel1.setBackground(Color.orange);
         panel1.setLayout(new GridLayout(5,2));
         
-        label1pnl1 = new JLabel("Kode buku");
-        label2pnl1 = new JLabel("Judul Buku");
-        label3pnl1 = new JLabel("Kategori Buku");
-        label4pnl1 = new JLabel("Tanggal Pinjam");
+        label1pnl1 = new JLabel("<html>Kode<br />buku<html>");
+        label2pnl1 = new JLabel("<html>Judul<br />Buku<html>");
+        label3pnl1 = new JLabel("<html>Kategori<br />Buku<html>");
+        label4pnl1 = new JLabel("<html>Tanggal<br />Pinjam<html>");
         label5pnl1 = new JLabel("Denda");
         label6pnl1 = new JLabel(buku.getKodeBuku());
         label7pnl1 = new JLabel(buku.getJudulBuku());
         label8pnl1 = new JLabel(DAO.DataAkses.lend_data(label6pnl1.getText(), 0));
         label9pnl1 = new JLabel(DAO.DataAkses.lend_data(label6pnl1.getText(), 1));
-        label10pnl1 = new JLabel("Denda");
+        label10pnl1 = new JLabel("0");
         
         panel1.add(label1pnl1);
         panel1.add(label6pnl1);
