@@ -1,5 +1,6 @@
 package View;
 
+import DAO.DaftarAnggotaDAO;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Image;
@@ -8,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Calendar;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -215,7 +215,7 @@ public class PendaftaranDosen extends JFrame {
                 String tglGabung = txtTgJoin.getText() + "";
                 
                 Model.Dosen lecturer = new Model.Dosen(id, nama, jk, tglLahir, alamat, noTelp, email, tglGabung);
-                DAO.DataAkses.addDosen(lecturer);
+                DAO.DaftarAnggotaDAO.addDosen(lecturer);
                 
                 JOptionPane.showMessageDialog(null, "Data has been successfully submitted!");
             }

@@ -1,5 +1,6 @@
 package View;
 
+import DAO.DaftarAnggotaDAO;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Image;
@@ -214,7 +215,7 @@ public class PendaftaranTamu extends JFrame {
                 String tglGabung = txtTgJoin.getText() + "";
                 
                 Model.Tamu guest = new Model.Tamu(id, nama, jk, tglLahir, alamat, noTelp, email, tglGabung);
-                DAO.DataAkses.addTamu(guest);
+                DAO.DaftarAnggotaDAO.addTamu(guest);
                 
                 JOptionPane.showMessageDialog(null, "Data has been successfully submitted!");
             }

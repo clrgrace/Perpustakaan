@@ -1,5 +1,6 @@
 package View;
 
+import DAO.DaftarAnggotaDAO;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Image;
@@ -214,7 +215,7 @@ public class PendaftaranMahasiswa extends JFrame {
                 String tglGabung = txtTgJoin.getText() + "";
                 
                 Model.Mahasiswa student = new Model.Mahasiswa(id, nama, jk, tglLahir, alamat, noTelp, email, tglGabung);
-                DAO.DataAkses.addMahasiswa(student);
+                DAO.DaftarAnggotaDAO.addMahasiswa(student);
                 
                 JOptionPane.showMessageDialog(null, "Data has been successfully submitted!");
             }

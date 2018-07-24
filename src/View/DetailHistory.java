@@ -1,5 +1,6 @@
 package View;
 
+import DAO.GenerateHistoryDAO;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -81,7 +82,8 @@ public class DetailHistory extends JFrame {
         lblBuku.setFont(new Font("Kristen ITC", Font.BOLD, 32));
         pnlTabel.add(lblBuku);
         
-        tblBuku = new JTable(DAO.DataAkses.genDataTableHistory(HistoryPeminjaman.txtKode.getText()), colNames);
+        tblBuku = new JTable(DAO.GenerateHistoryDAO.genDataTableHistory
+                    (HistoryPeminjaman.txtKode.getText()), colNames);
         tblBuku.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(tblBuku);
         scrollPane.setBounds(15, 70, 755, 70);

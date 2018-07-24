@@ -1,5 +1,6 @@
 package View;
 
+import DAO.GenerateHistoryDAO;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -84,7 +85,7 @@ public class HistoryPeminjaman extends JFrame {
         pnlTabel.add(lblJudul);
         
         //TABLES
-        tblListBuku = new JTable(DAO.DataAkses.genDataTableList(), colNames);
+        tblListBuku = new JTable(DAO.GenerateHistoryDAO.genDataTableList(), colNames);
         tblListBuku.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(tblListBuku);
         scrollPane.setBounds(15, 70, 755, 70);

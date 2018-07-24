@@ -30,7 +30,7 @@ public class PinjamDanPengembalianDAO {
             st.setInt(2, Integer.parseInt(kodeBuku));
             st.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PinjamDanPengembalianDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -45,7 +45,7 @@ public class PinjamDanPengembalianDAO {
             st.setString(4, z);
             st.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PinjamDanPengembalianDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -93,7 +93,7 @@ public class PinjamDanPengembalianDAO {
                 x[1] = rs.getString("b.tgl_peminjaman");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PinjamDanPengembalianDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return x[y];
     }
@@ -110,7 +110,7 @@ public class PinjamDanPengembalianDAO {
                 x = r.getString("available");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PinjamDanPengembalianDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return x;
     }
@@ -125,7 +125,7 @@ public class PinjamDanPengembalianDAO {
             st.setInt(3, Integer.parseInt(kodeBuku));
             st.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(DataAkses.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PinjamDanPengembalianDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
