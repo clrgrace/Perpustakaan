@@ -1,5 +1,6 @@
 package View;
 
+import DAO.BukuDAO;
 import DAO.DataAkses;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
@@ -167,7 +168,7 @@ public class AddBuku extends JFrame {
                 String genre = pilihanFiksiAtauNon.getSelectedItem().toString();
                 String jenis = txtJenis.getText();
                 
-                if(DataAkses.addBuku(kdB,jdlB,nmPgr,nmPbt,thnTbt,genre,jenis)){
+                if(BukuDAO.addBuku(kdB,jdlB,nmPgr,nmPbt,thnTbt,genre,jenis)){
                     JOptionPane.showMessageDialog(null, "Add Buku Sukses!");
                     dispose();
                     new MainMenuFrame().setVisible(true);

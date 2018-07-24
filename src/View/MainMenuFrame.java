@@ -1,6 +1,7 @@
 package View;
 
-import DAO.DataAkses;
+import DAO.BukuDAO;
+import DAO.LogoutDAO;
 import Model.Petugas;
 import java.awt.Color;
 import java.awt.Font;
@@ -58,7 +59,7 @@ public class MainMenuFrame extends JFrame{
         btnLogout.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if(DataAkses.logOut()){
+                if(LogoutDAO.logOut()){
                     dispose();
                     JOptionPane.showMessageDialog(null, "Thankyou for using this program");
                     LoginFrame loginf = new LoginFrame();
@@ -151,7 +152,7 @@ public class MainMenuFrame extends JFrame{
         lblIcon3.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
-                new Search(DAO.DataAkses.showBuku()).setVisible(true);
+                new Search(BukuDAO.showBuku()).setVisible(true);
             }
 
             @Override
@@ -243,9 +244,9 @@ public class MainMenuFrame extends JFrame{
         
     }
     
-//    public static void main(String[] args) {
-//        new MainMenuFrame().setVisible(true);
-//    }
+    public static void main(String[] args) {
+        new MainMenuFrame().setVisible(true);
+    }
     
     private JLabel lblUser = new JLabel();
     private JLabel lblTitle = new JLabel();

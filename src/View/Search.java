@@ -5,6 +5,8 @@
 */
 package View;
 
+import DAO.BukuDAO;
+import DAO.PinjamDanPengembalianDAO;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.*;
@@ -58,7 +60,7 @@ class Search extends JFrame{
             buku[i][1]= bookL.getJudulBuku();
             buku[i][2]= bookL.getNamaPengarang();
             buku[i][3]= bookL.getNamaPenerbit();
-            buku[i][4]= DAO.DataAkses.checkAvaiblity(bookL.getKodeBuku());
+            buku[i][4]= PinjamDanPengembalianDAO.checkAvaiblity(bookL.getKodeBuku());
             i++;
         }
         DefaultTableModel dtm = new DefaultTableModel(buku,book);
@@ -97,35 +99,35 @@ class Search extends JFrame{
         button1Pnl2.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                bookList = DAO.DataAkses.showBuku("judul_buku",textFieldPnl1.getText());
+                bookList = PinjamDanPengembalianDAO.showBuku("judul_buku",textFieldPnl1.getText());
                 
             }
         });
         button2Pnl2.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                bookList = DAO.DataAkses.showBuku("nama_pengarang",textFieldPnl1.getText());
+                bookList = PinjamDanPengembalianDAO.showBuku("nama_pengarang",textFieldPnl1.getText());
                 
             }
         });
         button3Pnl2.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                bookList = DAO.DataAkses.showBuku("kode_buku",textFieldPnl1.getText());
+                bookList = PinjamDanPengembalianDAO.showBuku("kode_buku",textFieldPnl1.getText());
                 
             }
         });
         button4Pnl2.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                bookList = DAO.DataAkses.showBuku("nama_penerbit",textFieldPnl1.getText());
+                bookList = PinjamDanPengembalianDAO.showBuku("nama_penerbit",textFieldPnl1.getText());
                 
             }
         });
         button5Pnl2.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                bookList = DAO.DataAkses.showBuku();
+                bookList = BukuDAO.showBuku();
                 
             }
         });
