@@ -7,6 +7,7 @@ package DAO;
 
 import Model.BukuFiksi;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -127,6 +128,31 @@ public class PinjamDanPengembalianDAO {
         } catch (SQLException ex) {
             Logger.getLogger(PinjamDanPengembalianDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public static Model.Buku Pengembalian(String kodeBuku){
+        
+        Model.BukuFiksi buku = new Model.BukuFiksi();
+        try {
+            String a = "SELECT * FROM buku where kode_buku = ?";
+            PreparedStatement stmt = ConnectionManager.getConnection().prepareStatement(a);
+            stmt.setString(1,kodeBuku);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                if(rs.getInt("kode_buku") == Integer.parseInt(kodeBuku)){
+                    buku.setJudulBuku(rs.getString("judul_buku"));
+                    buku.setKodeBuku(kodeBuku);
+                    buku.setNamaPenerbit(rs.getString("nama_penerbit"));
+                    buku.setNamaPengarang(rs.getString("nama_pengarang"));
+                    buku.setTahunTerbit(rs.getInt("tahun_terbit"));
+                }
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(PinjamDanPengembalianDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return buku;
     }
     
 }

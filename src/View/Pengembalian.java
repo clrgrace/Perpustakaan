@@ -5,6 +5,7 @@
 */
 package View;
 
+import DAO.PinjamDanPengembalianDAO;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -48,8 +49,7 @@ class Pengembalian extends JFrame {
         button1pnl1.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                Function.Function_PengembalianBuku pengembalian = new Function.Function_PengembalianBuku();
-                Model.Buku buku = pengembalian.Pengembalian(txt1pnl1.getText());
+                Model.Buku buku = PinjamDanPengembalianDAO.Pengembalian(txt1pnl1.getText());
                 if(buku.getKodeBuku() == null){
                     JOptionPane.showMessageDialog(null,"Kode Buku Tidak Ada");
                 }
